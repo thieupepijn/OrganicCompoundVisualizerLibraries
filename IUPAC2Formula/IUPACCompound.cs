@@ -7,6 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -25,12 +26,22 @@ namespace IUPAC2Formula
 			string mainChainDescription = FindMainChainPart(iupacName);
 			int mainChainLength = FindMainChainLength(mainChainDescription);
 			
-			_formula = "0," + mainChainLength.ToString() + ",()"; 
+			_formula = MakeFormula(mainChainLength);
 		}
 		
 		public string ShowFormula()
 		{
 			return _formula;
+		}
+		
+		public string MakeFormula(int mainchainLength)
+		{
+			StringBuilder builder = new StringBuilder();
+			builder.Append("S,");
+			builder.Append("0,");
+			builder.Append(mainchainLength.ToString());
+			builder.Append(",()");
+			return builder.ToString();		
 		}
 		
 		
@@ -61,7 +72,7 @@ namespace IUPAC2Formula
 			for (int counter=1;counter<11;counter++)
 			{
 				string countingWord = Number2BasicName(counter);
-				if (line.StartsWith(countingWord))
+				if (line.StartsWith(countingWord, StringComparison.OrdinalIgnoreCase))
 				{
 					return counter;
 				}
@@ -106,7 +117,7 @@ namespace IUPAC2Formula
 			{
 				string lineStart = line.Substring(0, counter);
 				string lineEnd = line.Substring(counter);
-				if (lineStart.EndsWith(before))
+				if (lineStart.EndsWith(before, StringComparison.OrdinalIgnoreCase))
 				{
 					return lineEnd;
 				}
