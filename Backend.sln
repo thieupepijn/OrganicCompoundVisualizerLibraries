@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IUPAC2Formula", "IUPAC2Form
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formula2Graph", "Formula2Graph\Formula2Graph.csproj", "{6F36CC02-622A-4660-A4B1-8FB72648A984}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneralUtils", "GeneralUtils\GeneralUtils.csproj", "{74388F3E-F24E-4301-B091-27C934365912}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,5 +22,9 @@ Global
 		{6F36CC02-622A-4660-A4B1-8FB72648A984}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F36CC02-622A-4660-A4B1-8FB72648A984}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F36CC02-622A-4660-A4B1-8FB72648A984}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74388F3E-F24E-4301-B091-27C934365912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74388F3E-F24E-4301-B091-27C934365912}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74388F3E-F24E-4301-B091-27C934365912}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74388F3E-F24E-4301-B091-27C934365912}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

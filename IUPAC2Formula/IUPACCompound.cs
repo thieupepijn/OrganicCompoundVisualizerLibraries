@@ -10,6 +10,7 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using GeneralUtils;
 
 namespace IUPAC2Formula
 {
@@ -27,6 +28,8 @@ namespace IUPAC2Formula
 			int mainChainLength = FindMainChainLength(mainChainDescription);
 			
 			_formula = MakeFormula(mainChainLength);
+			
+			string yo = UtilStrings.RemoveEverythingAfter(iupacName, "yl");
 		}
 		
 		public string ShowFormula()
@@ -51,7 +54,7 @@ namespace IUPAC2Formula
 
 			foreach(string line in lines)
 			{
-				if (ContainsNumber(line))
+				if (UtilStrings.ContainsNumber(line))
 				{
 					continue;
 				}
@@ -61,7 +64,7 @@ namespace IUPAC2Formula
 				}
 				else
 				{
-					return RemoveEverythingBefore(line, "yl");
+					return UtilStrings.RemoveEverythingBefore(line, "yl");
 				}
 			}
 			return String.Empty;
@@ -96,38 +99,7 @@ namespace IUPAC2Formula
                 case 10: return "dec";
                 default: return "unknown";
             }
-        }
-
-		private bool ContainsNumber(string line)
-		{
-			if ((line.Contains("1") || (line.Contains("2")) || (line.Contains("3")) || (line.Contains("4")) ||
-			     (line.Contains("5")) || (line.Contains("6")) || (line.Contains("7")) || (line.Contains("8")) || (line.Contains("9"))))
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-
-		private string RemoveEverythingBefore(string line, string before)
-		{
-			for (int counter=line.Length-1; counter >= 0; counter--)
-			{
-				string lineStart = line.Substring(0, counter);
-				string lineEnd = line.Substring(counter);
-				if (lineStart.EndsWith(before, StringComparison.OrdinalIgnoreCase))
-				{
-					return lineEnd;
-				}
-			}
-			return line;
-		}
-
-		
-		
-		
+        }	
 		
 	}
 }
