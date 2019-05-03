@@ -8,6 +8,8 @@
  */
 using System;
 using System.Text;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace IUPAC2Formula
 {
@@ -20,11 +22,33 @@ namespace IUPAC2Formula
 		public int LocationOnParent{get; private set;}
 		public int Length{get; private set;}
 		
-		public Formula(string typecode, int locationOnParent, int length)
+		public Formula(string typecode, int locationOnParent, int length, string remaining)
 		{
 			TypeCode = typecode;
 			LocationOnParent = locationOnParent;
-			Length = length;					
+			Length = length;	
+
+			Formula subFormula = new Formula(remaining);
+		}
+		
+		public Formula(string inline)
+		{
+			if (!string.IsNullOrEmpty(inline))
+			{
+				List<string> lines = inline.Split("-".ToCharArray()).ToList();
+				
+				foreach(string line in lines)
+				{
+					if (line.EndsWith("yl", StringComparison.OrdinalIgnoreCase))
+					{
+						int lengte = UtilChainLengths.FindSubChainLength(line);
+						
+					}
+					    
+					
+				}
+				
+			}
 		}
 		
 		public override string ToString()

@@ -25,11 +25,10 @@ namespace IUPAC2Formula
 		public IUPACCompound(string iupacName)
 		{
 			string mainChainDescription = FindMainChainPart(iupacName);
-			int mainChainLength = FindMainChainLength(mainChainDescription);
+			int mainChainLength = UtilChainLengths.FindMainChainLength(mainChainDescription);
 			
-			Formula = new Formula("S", 0, mainChainLength); //MakeFormula(mainChainLength);
-			
-			string yo = UtilStrings.RemoveEverythingAfter(iupacName, "yl");
+			string remaining = UtilStrings.RemoveEverythingAfter(iupacName, "yl");			
+			Formula = new Formula("S", 0, mainChainLength, remaining); 		
 		}
 		
 		public string ShowFormula()
@@ -60,19 +59,7 @@ namespace IUPAC2Formula
 			return String.Empty;
 		}
 		
-		private int FindMainChainLength(string line)
-		{
-			for (int counter=1;counter<11;counter++)
-			{
-				GreekNumberChainLength greekNumber = new GreekNumberChainLength(counter);
-				string countingWord = greekNumber.Prefix;
-				if (line.StartsWith(countingWord, StringComparison.OrdinalIgnoreCase))
-				{
-					return counter;
-				}
-			}
-			return 0;
-		}
+		
 		
 		
 		

@@ -66,6 +66,7 @@
     <Compile Include="GreekNumberSubchainsCount.cs" />
     <Compile Include="IUPACCompound.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UtilChainLengths.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GeneralUtils\GeneralUtils.csproj">
