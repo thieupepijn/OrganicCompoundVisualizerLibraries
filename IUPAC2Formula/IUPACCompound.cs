@@ -17,8 +17,8 @@ namespace IUPAC2Formula
 	
 	public class IUPACCompound
 	{
-		private string _iupacName{get; set;}
-		private string _formula{get; set;}
+	//	private string _iupacName{get; set;}
+		public Formula Formula{get; private set;}
 		
 		private int _mainChainLength{get; set;}
 		
@@ -27,27 +27,17 @@ namespace IUPAC2Formula
 			string mainChainDescription = FindMainChainPart(iupacName);
 			int mainChainLength = FindMainChainLength(mainChainDescription);
 			
-			_formula = MakeFormula(mainChainLength);
+			Formula = new Formula("S", 0, mainChainLength); //MakeFormula(mainChainLength);
 			
 			string yo = UtilStrings.RemoveEverythingAfter(iupacName, "yl");
 		}
 		
 		public string ShowFormula()
 		{
-			return _formula;
+			return Formula.ToString();
 		}
 		
-		public string MakeFormula(int mainchainLength)
-		{
-			StringBuilder builder = new StringBuilder();
-			builder.Append("S,");
-			builder.Append("0,");
-			builder.Append(mainchainLength.ToString());
-			builder.Append(",()");
-			return builder.ToString();		
-		}
-		
-		
+				
 		private string FindMainChainPart(string inline)
 		{
 			List<string> lines = inline.Split("-".ToCharArray()).ToList();
@@ -74,7 +64,8 @@ namespace IUPAC2Formula
 		{
 			for (int counter=1;counter<11;counter++)
 			{
-				string countingWord = Number2BasicName(counter);
+				GreekNumberChainLength greekNumber = new GreekNumberChainLength(counter);
+				string countingWord = greekNumber.Prefix;
 				if (line.StartsWith(countingWord, StringComparison.OrdinalIgnoreCase))
 				{
 					return counter;
@@ -83,23 +74,7 @@ namespace IUPAC2Formula
 			return 0;
 		}
 		
-		private string Number2BasicName(int number)
-        {
-            switch (number)
-            {
-                case 1: return "meth";
-                case 2: return "eth";
-                case 3: return "prop";
-                case 4: return "but";
-                case 5: return "pent";
-                case 6: return "hex";
-                case 7: return "hept";
-                case 8: return "oct";
-                case 9: return "non";
-                case 10: return "dec";
-                default: return "unknown";
-            }
-        }	
+		
 		
 	}
 }

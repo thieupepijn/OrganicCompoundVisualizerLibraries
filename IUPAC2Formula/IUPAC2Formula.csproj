@@ -61,6 +61,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formula.cs" />
+    <Compile Include="GreekNumberChainLength.cs" />
+    <Compile Include="GreekNumberSubchainsCount.cs" />
     <Compile Include="IUPACCompound.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
