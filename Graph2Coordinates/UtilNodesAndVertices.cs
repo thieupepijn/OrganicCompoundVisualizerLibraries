@@ -45,14 +45,14 @@ namespace Graph2Coordinates
 			}
 		}
 		
-		public static void InitNodesAndVerticesFromLines(List<string> lines, List<Node> nodes, List<Vertice> vertices)
-		{
-			InitNodesFromLine(lines[0], nodes);
-			lines.RemoveAt(0);
-			InitVerticesFromLines(lines, nodes, vertices);
-		}
+//		public static void InitNodesAndVerticesFromLines(List<string> lines, List<Node> nodes, List<Vertice> vertices)
+//		{
+//			InitNodesFromLine(lines[0], nodes);
+//			lines.RemoveAt(0);
+//			InitVerticesFromLines(lines, nodes, vertices);
+//		}
 		
-		private static void InitNodesFromLine(string line, List<Node> nodes)
+		public static void InitNodesFromLine(string line, List<Node> nodes)
 		{
 			string[] nodeElements = line.Split(";".ToCharArray());
 			foreach(string nodeElement in nodeElements)
@@ -62,7 +62,7 @@ namespace Graph2Coordinates
 			}
 		}
 		
-		private static void InitVerticesFromLines(List<string> lines, List<Node> nodes, List<Vertice> vertices)
+		public static void InitVerticesFromLines(List<string> lines, List<Node> nodes, List<Vertice> vertices)
 		{
 			foreach(string line in lines)
 			{
