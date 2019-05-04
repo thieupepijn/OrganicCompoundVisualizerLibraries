@@ -21,34 +21,51 @@ namespace IUPAC2Formula
 		public string TypeCode {get; private set;}
 		public int LocationOnParent{get; private set;}
 		public int Length{get; private set;}
+		public List<Formula> SubFormulas{get; private set;}
+		
 		
 		public Formula(string typecode, int locationOnParent, int length, string remaining)
 		{
 			TypeCode = typecode;
 			LocationOnParent = locationOnParent;
 			Length = length;	
-
-			Formula subFormula = new Formula(remaining);
+			SubFormulas = GetSubFormulas(remaining);		
+		}
+				
+		
+		
+		public Formula(string locations, string subchainname)
+		{
+			TypeCode = "S";
+			string location = locations.Split(",".ToCharArray()).First();
+			LocationOnParent = Convert.ToInt16(location);
+			Length = UtilChainLengths.FindSubChainLength(subchainname);
+			SubFormulas = new List<Formula>();
 		}
 		
-		public Formula(string inline)
+		private List<Formula> GetSubFormulas(string line)
 		{
-			if (!string.IsNullOrEmpty(inline))
+			if(String.IsNullOrEmpty(line))
 			{
-				List<string> lines = inline.Split("-".ToCharArray()).ToList();
+				return new List<Formula>();
+			}
+			else
+			{
+				List <Formula> formulas = new List<Formula>();
+				List<string> lines = line.Split("-".ToCharArray()).ToList();
 				
-				foreach(string line in lines)
+				for(int counter=0; counter<lines.Count;counter++)
 				{
+					line = lines[counter];
 					if (line.EndsWith("yl", StringComparison.OrdinalIgnoreCase))
 					{
-						int lengte = UtilChainLengths.FindSubChainLength(line);
-						
-					}
-					    
-					
-				}
-				
-			}
+						string previous = lines[counter-1];
+						Formula formula = new Formula(previous, line);
+						formulas.Add(formula);
+					}					
+				}				
+				return formulas;
+			}			
 		}
 		
 		public override string ToString()
@@ -60,7 +77,9 @@ namespace IUPAC2Formula
 			builder.Append(",");
 			builder.Append(Length);
 			builder.Append(",");
-			builder.Append("()");
+			builder.Append("(");
+			builder.Append(string.Join("-", SubFormulas));
+			builder.Append(")");
 			return builder.ToString();
 		}
 		
