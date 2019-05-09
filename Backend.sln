@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneralUtils", "GeneralUtil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graph2Coordinates", "Graph2Coordinates\Graph2Coordinates.csproj", "{EACE5C98-688E-4250-88BF-17049E39B09C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coordinates2Image", "Coordinates2Image\Coordinates2Image.csproj", "{FD8C16C5-C0AC-4387-9142-15F64BE7015A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,5 +34,9 @@ Global
 		{EACE5C98-688E-4250-88BF-17049E39B09C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EACE5C98-688E-4250-88BF-17049E39B09C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EACE5C98-688E-4250-88BF-17049E39B09C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD8C16C5-C0AC-4387-9142-15F64BE7015A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD8C16C5-C0AC-4387-9142-15F64BE7015A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD8C16C5-C0AC-4387-9142-15F64BE7015A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD8C16C5-C0AC-4387-9142-15F64BE7015A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
