@@ -28,10 +28,10 @@ namespace IUPAC2Formula
 		{
 			TypeCode = typecode;
 			LocationOnParent = locationOnParent;
-			Length = length;	
-			SubFormulas = GetSubFormulas(remaining);		
+			Length = length;
+			SubFormulas = GetSubFormulas(remaining);
 		}
-				
+		
 		
 		
 		public Formula(string locations, string subchainname)
@@ -39,6 +39,14 @@ namespace IUPAC2Formula
 			TypeCode = "S";
 			string location = locations.Split(",".ToCharArray()).First();
 			LocationOnParent = Convert.ToInt16(location);
+			Length = UtilChainLengths.FindSubChainLength(subchainname);
+			SubFormulas = new List<Formula>();
+		}
+		
+		public Formula(int location, string subchainname)
+		{
+			TypeCode = "S";
+			LocationOnParent = location;
 			Length = UtilChainLengths.FindSubChainLength(subchainname);
 			SubFormulas = new List<Formula>();
 		}
@@ -59,14 +67,20 @@ namespace IUPAC2Formula
 					line = lines[counter];
 					if (line.EndsWith("yl", StringComparison.OrdinalIgnoreCase))
 					{
-						string previous = lines[counter-1];
-						Formula formula = new Formula(previous, line);
-						formulas.Add(formula);
-					}					
-				}				
+						string locationsString = lines[counter-1];
+						List<string> locations = locationsString.Split(",".ToCharArray()).ToList();
+						foreach(string location in locations)
+						{
+							Formula formula = new Formula(Convert.ToInt16(location), line);
+							formulas.Add(formula);
+						}
+					}
+				}
 				return formulas;
-			}			
+			}
 		}
+		
+		
 		
 		public override string ToString()
 		{
