@@ -25,10 +25,22 @@ namespace IUPAC2Formula
 		public IUPACCompound(string iupacName)
 		{
 			string mainChainDescription = FindMainChainPart(iupacName);
+			Enums.ChainTypes chaintype;
+			
+			if (mainChainDescription.StartsWith("cyclo"))
+			{
+				chaintype = Enums.ChainTypes.Cyclo;
+				mainChainDescription = mainChainDescription.Remove(0, 5); //start and ending of cyclo
+			}
+			else 
+			{
+				chaintype = Enums.ChainTypes.Straight;
+			}
+			
 			int mainChainLength = UtilChainLengths.FindMainChainLength(mainChainDescription);
 			
 			string remaining = UtilStrings.RemoveEverythingAfter(iupacName, "yl");			
-			Formula = new Formula("S", 0, mainChainLength, remaining); 		
+			Formula = new Formula(chaintype, 0, mainChainLength, remaining); 		
 		}
 		
 		public string ShowFormula()

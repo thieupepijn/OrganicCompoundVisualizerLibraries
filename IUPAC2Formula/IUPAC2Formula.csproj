@@ -37,7 +37,7 @@
     <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
     <StartAction>Program</StartAction>
     <StartProgram>..\..\Excecutables\OrganicCompoundVisualizerConsole.exe</StartProgram>
-    <StartArguments>3,2,5-trimethylnonane C:\Matthieu\ThieuProgs\yo.bmp</StartArguments>
+    <StartArguments>3,2,5-trimethylcyclononane C:\Matthieu\ThieuProgs\yo.bmp</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums.cs" />
     <Compile Include="Formula.cs" />
     <Compile Include="GreekNumberChainLength.cs" />
     <Compile Include="GreekNumberSubchainsCount.cs" />

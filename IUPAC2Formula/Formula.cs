@@ -11,6 +11,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 
+
 namespace IUPAC2Formula
 {
 	/// <summary>
@@ -18,34 +19,24 @@ namespace IUPAC2Formula
 	/// </summary>
 	public class Formula
 	{
-		public string TypeCode {get; private set;}
+		public Enums.ChainTypes ChainType {get; private set;}
 		public int LocationOnParent{get; private set;}
 		public int Length{get; private set;}
 		public List<Formula> SubFormulas{get; private set;}
 		
 		
-		public Formula(string typecode, int locationOnParent, int length, string remaining)
+		public Formula(Enums.ChainTypes chaintype, int locationOnParent, int length, string remaining)
 		{
-			TypeCode = typecode;
+			ChainType = chaintype;
 			LocationOnParent = locationOnParent;
 			Length = length;
 			SubFormulas = GetSubFormulas(remaining);
 		}
 		
-		
-		
-		public Formula(string locations, string subchainname)
-		{
-			TypeCode = "S";
-			string location = locations.Split(",".ToCharArray()).First();
-			LocationOnParent = Convert.ToInt16(location);
-			Length = UtilChainLengths.FindSubChainLength(subchainname);
-			SubFormulas = new List<Formula>();
-		}
-		
+			
 		public Formula(int location, string subchainname)
 		{
-			TypeCode = "S";
+			ChainType = Enums.ChainTypes.Straight;
 			LocationOnParent = location;
 			Length = UtilChainLengths.FindSubChainLength(subchainname);
 			SubFormulas = new List<Formula>();
@@ -85,7 +76,16 @@ namespace IUPAC2Formula
 		public override string ToString()
 		{
 			StringBuilder builder = new StringBuilder();
-			builder.Append(TypeCode);
+			
+			if (ChainType == Enums.ChainTypes.Straight)
+			{
+				builder.Append("S");
+			}
+			else if (ChainType == Enums.ChainTypes.Cyclo)
+			{
+				builder.Append("C");
+			}
+			
 			builder.Append(",");
 			builder.Append(LocationOnParent);
 			builder.Append(",");
