@@ -2,8 +2,8 @@ C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\Coordinat
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\Coordinates2Image\bin\Debug\Coordinates2Image.pdb
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\Coordinates2Image\bin\Debug\Graph2Coordinates.dll
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\Coordinates2Image\bin\Debug\Graph2Coordinates.pdb
+C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Excecutables\Coordinates2Image.dll
+C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Excecutables\Coordinates2Image.pdb
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\Coordinates2Image\obj\Debug\Coordinates2Image.csprojResolveAssemblyReference.cache
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\Coordinates2Image\obj\Debug\Coordinates2Image.dll
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\Coordinates2Image\obj\Debug\Coordinates2Image.pdb
-C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Excecutables\Coordinates2Image.dll
-C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Excecutables\Coordinates2Image.pdb

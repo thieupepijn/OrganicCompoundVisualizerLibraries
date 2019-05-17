@@ -48,8 +48,7 @@ namespace Coordinates2Image
 		
 		public BitmapImage Draw2BitmapImage()
 		{
-			Bitmap bitmap = Draw2Bitmap();
-			
+			Bitmap bitmap = Draw2Bitmap();			
 			using(MemoryStream memory = new MemoryStream())
 			{
 				bitmap.Save(memory, ImageFormat.Png);

@@ -1,7 +1,7 @@
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\Formula2Graph\bin\Debug\Formula2Graph.dll
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\Formula2Graph\bin\Debug\Formula2Graph.pdb
+C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Excecutables\Formula2Graph.dll
+C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Excecutables\Formula2Graph.pdb
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\Formula2Graph\obj\Debug\Formula2Graph.csprojResolveAssemblyReference.cache
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\Formula2Graph\obj\Debug\Formula2Graph.dll
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\Formula2Graph\obj\Debug\Formula2Graph.pdb
-C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Excecutables\Formula2Graph.dll
-C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Excecutables\Formula2Graph.pdb
