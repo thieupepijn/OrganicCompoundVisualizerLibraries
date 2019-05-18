@@ -1,4 +1,3 @@
-C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\IUPAC2Image\obj\Debug\IUPAC2Image.csprojResolveAssemblyReference.cache
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\IUPAC2Image\bin\Debug\IUPAC2Image.dll
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\IUPAC2Image\bin\Debug\IUPAC2Image.pdb
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\IUPAC2Image\bin\Debug\Coordinates2Image.dll
@@ -11,7 +10,8 @@ C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\IUPAC2Ima
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\IUPAC2Image\bin\Debug\GeneralUtils.pdb
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\IUPAC2Image\bin\Debug\Graph2Coordinates.pdb
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\IUPAC2Image\bin\Debug\IUPAC2Formula.pdb
-C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\IUPAC2Image\obj\Debug\IUPAC2Image.dll
-C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\IUPAC2Image\obj\Debug\IUPAC2Image.pdb
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Excecutables\IUPAC2Image.dll
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Excecutables\IUPAC2Image.pdb
+C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\IUPAC2Image\obj\Debug\IUPAC2Image.csprojResolveAssemblyReference.cache
+C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\IUPAC2Image\obj\Debug\IUPAC2Image.dll
+C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\IUPAC2Image\obj\Debug\IUPAC2Image.pdb

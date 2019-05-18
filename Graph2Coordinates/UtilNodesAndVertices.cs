@@ -79,6 +79,14 @@ namespace Graph2Coordinates
 			}
 		}
 		
+		public static void RemoveUnConnectedNodes(List<Node> nodes, List<Vertice> vertices)
+		{
+			if(nodes.Count > 1)
+			{
+				nodes.RemoveAll(n => !n.IsConnected(vertices));
+			}
+		}
+			
 		public static void Reposition(List<Node> nodes, List<Vertice> vertices, int canvasWidth, int canvasHeight)
 		{
 			Dimensions nodeDimensions = GetDimensions(nodes);

@@ -58,7 +58,7 @@ namespace Formula2Graph
 			else //if(ChainType == Enums.ChainTypes.Circular)
 			{
 				Nodes = MakeCircularNodes(length, parentNode, startNumber);
-				Vertices = MakeCircularVertices(Nodes);				
+				Vertices = MakeCircularVertices(Nodes);
 			}
 			
 			string remainder = GetRemainder(line);

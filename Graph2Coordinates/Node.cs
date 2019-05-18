@@ -130,20 +130,7 @@ namespace Graph2Coordinates
 			int newY = Location.Y + moveY;
 			Location = new Location(newX, newY);
 		}
-			
-//		public void Draw(Canvas canvas)
-//		{
-//			Ellipse circle = new Ellipse();
-//			circle.Fill = new SolidColorBrush(Colors.Black);
-//			circle.Stroke = new SolidColorBrush(Colors.Black);
-//			
-//			circle.Width = 20;
-//			circle.Height = 20;
-//			
-//			Canvas.SetLeft(circle, Location.X);
-//			Canvas.SetTop(circle, Location.Y);
-//			canvas.Children.Add(circle);
-//		}
+
 		
 		public override string ToString()
 		{

@@ -42,6 +42,7 @@ namespace IUPAC2Image
 			UtilNodesAndVertices.InitVerticesFromLines(verticesLines, nodes, vertices);
 			
 			UtilNodesAndVertices.InitializeNodeLocations(nodes, vertices);
+			UtilNodesAndVertices.RemoveUnConnectedNodes(nodes, vertices);
 			UtilNodesAndVertices.Reposition(nodes, vertices, imageWidth, imageHeight);
 			
 			_drawer = new Drawer(nodes, vertices, imageWidth, imageHeight);	
