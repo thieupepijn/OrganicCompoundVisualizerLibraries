@@ -33,7 +33,7 @@ namespace IUPAC2Formula
 			SubFormulas = GetSubFormulas(remaining);
 		}
 		
-			
+		
 		public Formula(int location, string subchainname)
 		{
 			ChainType = Enums.ChainTypes.Straight;
@@ -50,6 +50,12 @@ namespace IUPAC2Formula
 			}
 			else
 			{
+				if (line.Contains(")"))
+				{
+					string boe = GeneralUtils.UtilStrings.ReplaceoOnlyBetweenOuterMostBrackets(line, "-", "&");
+					line = GeneralUtils.UtilStrings.ReplaceEverythingBetweenOuterMostBrackets(line, "propyl");
+				}
+				
 				List <Formula> formulas = new List<Formula>();
 				List<string> lines = line.Split("-".ToCharArray()).ToList();
 				

@@ -54,5 +54,33 @@ namespace GeneralUtils
 			}
 			return line;			
 		}
+		
+		public static string ReplaceEverythingBetweenOuterMostBrackets(string line, string replaceline)
+		{
+			
+			int startBracketPosition = line.IndexOf("(");
+			int endBracketposition = line.LastIndexOf(")");
+			int difference = endBracketposition - startBracketPosition;
+			
+			line = line.Remove(startBracketPosition, difference+1);
+			return line.Insert(startBracketPosition, replaceline);
+		}
+		
+		
+		public static string ReplaceoOnlyBetweenOuterMostBrackets(string line, string target, string substitute)
+		{
+			
+			int startBracketPosition = line.IndexOf("(");
+			int endBracketposition = line.LastIndexOf(")");
+			int difference = endBracketposition - startBracketPosition;
+			
+			string substring = line.Substring(startBracketPosition, difference);
+			string substringReplaced = substring.Replace(target, substitute);
+							
+			return line.Replace(substring, substringReplaced);
+		}
+		
+		
+		
 	}
 }
