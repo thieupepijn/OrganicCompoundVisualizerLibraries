@@ -50,10 +50,10 @@ namespace IUPAC2Formula
 			}
 			else
 			{
-				if (line.Contains(")"))
+				if (line.Contains(Constants.EndBracket))
 				{
-					string boe = GeneralUtils.UtilStrings.ReplaceoOnlyBetweenOuterMostBrackets(line, "-", "&");
-					line = GeneralUtils.UtilStrings.ReplaceEverythingBetweenOuterMostBrackets(line, "propyl");
+					string boe = GeneralUtils.UtilStrings.ReplaceOnlyBetweenStartAndEnd(Constants.StartBrakect, Constants.EndBracket, line, Constants.GroupSeperator, Constants.GroupSeperatorSubstitute);
+					line = GeneralUtils.UtilStrings.ReplaceEverythingBetweenStartAndEnd(Constants.StartBrakect, Constants.EndBracket, line, "propyl");
 				}
 				
 				List <Formula> formulas = new List<Formula>();
@@ -62,7 +62,7 @@ namespace IUPAC2Formula
 				for(int counter=0; counter<lines.Count;counter++)
 				{
 					line = lines[counter];
-					if (line.EndsWith("yl", StringComparison.OrdinalIgnoreCase))
+					if (line.EndsWith(Constants.SubChainEnd, StringComparison.OrdinalIgnoreCase))
 					{
 						string locationsString = lines[counter-1];
 						List<string> locations = locationsString.Split(",".ToCharArray()).ToList();

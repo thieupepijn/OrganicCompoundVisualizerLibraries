@@ -55,26 +55,26 @@ namespace GeneralUtils
 			return line;			
 		}
 		
-		public static string ReplaceEverythingBetweenOuterMostBrackets(string line, string replaceline)
+		public static string ReplaceEverythingBetweenStartAndEnd(string start, string end, string line, string replaceline)
 		{
 			
-			int startBracketPosition = line.IndexOf("(");
-			int endBracketposition = line.LastIndexOf(")");
-			int difference = endBracketposition - startBracketPosition;
+			int startPosition = line.IndexOf(start);
+			int endPosition = line.LastIndexOf(end);
+			int difference = endPosition - startPosition;
 			
-			line = line.Remove(startBracketPosition, difference+1);
-			return line.Insert(startBracketPosition, replaceline);
+			line = line.Remove(startPosition, difference+1);
+			return line.Insert(startPosition, replaceline);
 		}
 		
 		
-		public static string ReplaceoOnlyBetweenOuterMostBrackets(string line, string target, string substitute)
+		public static string ReplaceOnlyBetweenStartAndEnd(string start, string end, string line, string target, string substitute)
 		{
 			
-			int startBracketPosition = line.IndexOf("(");
-			int endBracketposition = line.LastIndexOf(")");
-			int difference = endBracketposition - startBracketPosition;
+			int startPosition = line.IndexOf(start);
+			int endPosition = line.LastIndexOf(end);
+			int difference = endPosition - startPosition;
 			
-			string substring = line.Substring(startBracketPosition, difference);
+			string substring = line.Substring(startPosition, difference);
 			string substringReplaced = substring.Replace(target, substitute);
 							
 			return line.Replace(substring, substringReplaced);

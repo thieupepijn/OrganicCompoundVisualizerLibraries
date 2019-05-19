@@ -40,13 +40,13 @@ namespace IUPAC2Formula
 			int mainChainLength = UtilChainLengths.FindMainChainLength(mainChainDescription);
 			
 			string remaining;
-			if (iupacName.Contains(")"))
+			if (iupacName.Contains(Constants.EndBracket))
 			{
-				remaining = UtilStrings.RemoveEverythingAfter(iupacName, ")");
+				remaining = UtilStrings.RemoveEverythingAfter(iupacName, Constants.EndBracket);
 			}
 			else
 			{
-				remaining = UtilStrings.RemoveEverythingAfter(iupacName, "yl");
+				remaining = UtilStrings.RemoveEverythingAfter(iupacName, Constants.SubChainEnd);
 			}
 			
 			Formula = new Formula(chaintype, 0, mainChainLength, remaining);
@@ -68,19 +68,19 @@ namespace IUPAC2Formula
 				{
 					continue;
 				}
-				else if (line.EndsWith("yl", StringComparison.OrdinalIgnoreCase))
+				else if (line.EndsWith(Constants.SubChainEnd, StringComparison.OrdinalIgnoreCase))
 				{
 					continue;
 				}
 				else
 				{
-					if(line.Contains(")"))
+					if(line.Contains(Constants.EndBracket))
 					{
-						return UtilStrings.RemoveEverythingBefore(line, ")");						
+						return UtilStrings.RemoveEverythingBefore(line, Constants.EndBracket);						
 					}
 					else
 					{
-						return UtilStrings.RemoveEverythingBefore(line, "yl");
+						return UtilStrings.RemoveEverythingBefore(line, Constants.SubChainEnd);
 					}
 				}
 			}
