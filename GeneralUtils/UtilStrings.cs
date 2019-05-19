@@ -55,6 +55,18 @@ namespace GeneralUtils
 			return line;			
 		}
 		
+		
+		public static string GetEverythingBetweenStartAndEnd(string start, string end, string line)
+		{
+			int startPosition = line.IndexOf(start);
+			int endPosition = line.LastIndexOf(end);
+			int difference = endPosition - startPosition;
+			
+			return line.Substring(startPosition+1, difference-1);
+		}
+		
+		
+		
 		public static string ReplaceEverythingBetweenStartAndEnd(string start, string end, string line, string replaceline)
 		{
 			
@@ -79,8 +91,7 @@ namespace GeneralUtils
 							
 			return line.Replace(substring, substringReplaced);
 		}
-		
-		
+				
 		
 	}
 }

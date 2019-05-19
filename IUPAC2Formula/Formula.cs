@@ -10,6 +10,7 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using GeneralUtils;
 
 
 namespace IUPAC2Formula
@@ -52,8 +53,10 @@ namespace IUPAC2Formula
 			{
 				if (line.Contains(Constants.EndBracket))
 				{
-					string boe = GeneralUtils.UtilStrings.ReplaceOnlyBetweenStartAndEnd(Constants.StartBrakect, Constants.EndBracket, line, Constants.GroupSeperator, Constants.GroupSeperatorSubstitute);
-					line = GeneralUtils.UtilStrings.ReplaceEverythingBetweenStartAndEnd(Constants.StartBrakect, Constants.EndBracket, line, "propyl");
+					//string boe = UtilStrings.ReplaceOnlyBetweenStartAndEnd(Constants.StartBrakect, Constants.EndBracket, line, Constants.GroupSeperator, Constants.GroupSeperatorSubstitute);
+					//line = UtilStrings.ReplaceEverythingBetweenStartAndEnd(Constants.StartBrakect, Constants.EndBracket, line, "propyl");
+					string subLine = UtilStrings.GetEverythingBetweenStartAndEnd(Constants.StartBrakect, Constants.EndBracket, line);	
+					return GetSubFormulas(subLine);
 				}
 				
 				List <Formula> formulas = new List<Formula>();
