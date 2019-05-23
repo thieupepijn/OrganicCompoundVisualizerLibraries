@@ -52,7 +52,7 @@ namespace GeneralUtils
 					return lineStart;
 				}
 			}
-			return line;			
+			return line;
 		}
 		
 		
@@ -88,10 +88,48 @@ namespace GeneralUtils
 			
 			string substring = line.Substring(startPosition, difference);
 			string substringReplaced = substring.Replace(target, substitute);
-							
+			
 			return line.Replace(substring, substringReplaced);
 		}
-				
+		
+		
+		public static string RemoveAtStart(string line, string away)
+		{
+			if (line.StartsWith(away))
+			{
+				return line.Remove(0, away.Length);
+			}
+			else
+			{
+				return line;
+			}
+		}
+		
+		
+		public static string RemovePrefix(string line)
+		{
+			if (line.StartsWith("di", StringComparison.OrdinalIgnoreCase))
+			{
+				return RemoveAtStart(line, "di");
+			}
+			else if (line.StartsWith("tri", StringComparison.OrdinalIgnoreCase))
+			{
+				return RemoveAtStart(line, "tri");
+			}
+			else if (line.StartsWith("tetra", StringComparison.OrdinalIgnoreCase))
+			{
+				return RemoveAtStart(line, "tetra");
+			}
+			else if (line.StartsWith("penta", StringComparison.OrdinalIgnoreCase))
+			{
+				return RemoveAtStart(line, "penta");
+			}
+			else 
+			{
+				return line;
+			}	
+		}
+		
 		
 	}
 }

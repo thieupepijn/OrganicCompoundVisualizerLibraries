@@ -30,7 +30,7 @@ namespace IUPAC2Formula
 			if (mainChainDescription.StartsWith("cyclo"))
 			{
 				chaintype = Enums.ChainTypes.Cyclo;
-				mainChainDescription = mainChainDescription.Remove(0, 5); //start and ending of cyclo
+				mainChainDescription = UtilStrings.RemoveAtStart(mainChainDescription, "cyclo");
 			}
 			else
 			{

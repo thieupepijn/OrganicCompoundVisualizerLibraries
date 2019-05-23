@@ -51,14 +51,6 @@ namespace IUPAC2Formula
 			}
 			else
 			{
-				if (line.Contains(Constants.EndBracket))
-				{
-					//string boe = UtilStrings.ReplaceOnlyBetweenStartAndEnd(Constants.StartBrakect, Constants.EndBracket, line, Constants.GroupSeperator, Constants.GroupSeperatorSubstitute);
-					//line = UtilStrings.ReplaceEverythingBetweenStartAndEnd(Constants.StartBrakect, Constants.EndBracket, line, "propyl");
-					string subLine = UtilStrings.GetEverythingBetweenStartAndEnd(Constants.StartBrakect, Constants.EndBracket, line);	
-					return GetSubFormulas(subLine);
-				}
-				
 				List <Formula> formulas = new List<Formula>();
 				List<string> lines = line.Split("-".ToCharArray()).ToList();
 				
@@ -67,13 +59,9 @@ namespace IUPAC2Formula
 					line = lines[counter];
 					if (line.EndsWith(Constants.SubChainEnd, StringComparison.OrdinalIgnoreCase))
 					{
-						string locationsString = lines[counter-1];
-						List<string> locations = locationsString.Split(",".ToCharArray()).ToList();
-						foreach(string location in locations)
-						{
-							Formula formula = new Formula(Convert.ToInt16(location), line);
-							formulas.Add(formula);
-						}
+						string locationsString = lines[counter-1];	
+						Group group = new Group(locationsString, line);
+						formulas.AddRange(group.Formulas);
 					}
 				}
 				return formulas;
