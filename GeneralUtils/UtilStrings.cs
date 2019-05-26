@@ -7,7 +7,9 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.Text;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GeneralUtils
 {
@@ -129,6 +131,81 @@ namespace GeneralUtils
 				return line;
 			}	
 		}
+		
+		
+		public static List<string> SplitOnlyOutsideBrackets(string line, string splitCharacter)
+		{
+			
+			
+			return null;
+			
+			
+			
+		}
+		
+		
+		public static string ReplaceBetweenBrackets(string line, string target, string substitute)
+		{
+			StringBuilder builder = new StringBuilder();
+		
+			for (int counter = 0; counter < line.Length; counter++)
+			{
+				char currentChar = line[counter];
+				if (currentChar == Convert.ToChar(target))
+				{
+					int openingBrackets = NumberOfOpeningBracketsBefore(line, counter);
+					int closingBrackets = NumberOfClosingBracketsBefore(line, counter);
+					
+					if (openingBrackets > closingBrackets)
+					{
+						builder.Append(substitute);
+					}
+					else
+					{
+						builder.Append(target);
+					}	
+				}
+				else 
+				{
+					builder.Append(currentChar);
+				}
+			}
+			return builder.ToString();
+		}
+		
+		
+		private static int NumberOfOpeningBracketsBefore(string line, int indexnumber)
+		{
+			int number = 0;
+			string before = line.Substring(0, indexnumber);
+			List<char> characters = before.ToCharArray().ToList();
+			foreach(char character in characters)
+			{
+				if (character == '(')
+				{
+					number++;
+				}
+			}
+			return number;
+		}
+		
+		
+		private static int NumberOfClosingBracketsBefore(string line, int indexnumber)
+		{
+			int number = 0;
+			string before = line.Substring(0, indexnumber);
+			List<char> characters = before.ToCharArray().ToList();
+			foreach(char character in characters)
+			{
+				if (character == ')')
+				{
+					number++;
+				}
+			}
+			return number;
+		}
+		
+		
 		
 		
 	}
