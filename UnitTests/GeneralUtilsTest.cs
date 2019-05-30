@@ -25,5 +25,14 @@ namespace UnitTests
 			StringAssert.AreEqualIgnoringCase("12-34(56#8#9)3456-4(555#7)", resultaat);
 		}
 		
+		
+		[Test]
+		public void SplitOnlyOutsideBracketsTest()
+		{
+			string line = "12-34(56-8-9)3456-4(555-7)";
+			List<string> lines = UtilStrings.SplitOnlyOutsideBrackets(line, "-", "#");
+			Assert.AreEqual(3, lines.Count, string.Empty);
+		}
+		
 	}
 }

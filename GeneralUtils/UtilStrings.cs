@@ -133,14 +133,16 @@ namespace GeneralUtils
 		}
 		
 		
-		public static List<string> SplitOnlyOutsideBrackets(string line, string splitCharacter)
+		public static List<string> SplitOnlyOutsideBrackets(string line, string splitCharacter, string characterNotOccuringInLine)
 		{
-			
-			
-			return null;
-			
-			
-			
+			string lineWithoutSplitCharactersBetweenBrackets = ReplaceBetweenBrackets(line, splitCharacter, characterNotOccuringInLine);			
+			List<string> lines = lineWithoutSplitCharactersBetweenBrackets.Split(splitCharacter.ToCharArray()).ToList();
+		
+			for(int counter=0; counter<lines.Count;counter++)
+			{
+				lines[counter] = lines[counter].Replace(characterNotOccuringInLine, splitCharacter);
+			}
+			return lines;			
 		}
 		
 		
