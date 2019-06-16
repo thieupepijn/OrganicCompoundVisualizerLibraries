@@ -18,22 +18,37 @@ namespace IUPAC2Formula
 	/// </summary>
 	public class Group
 	{
-	
+		
 		public List<Formula> Formulas {get; private set;}
 		
 		public Group(string locationsline, string nameline)
 		{
 			
-			List<string> locations = locationsline.Split(",".ToCharArray()).ToList();
-			string chainName = GeneralUtils.UtilStrings.RemovePrefix(nameline);
-			int chainLength = UtilChainLengths.FindSubChainLength(chainName);
-			
-		    Formulas = new List<Formula>();
-			foreach(string location in locations)
-			{				
-				Formula formula = new Formula(Convert.ToInt16(location), chainName);
-				Formulas.Add(formula);
-			}			
+			if((nameline.StartsWith(Constants.StartBracket, StringComparison.OrdinalIgnoreCase)) && (nameline.EndsWith(Constants.EndBracket, StringComparison.OrdinalIgnoreCase)))
+			{
+				nameline = nameline.TrimStart("(".ToCharArray());
+				nameline = nameline.TrimEnd(")".ToCharArray());
+				
+				int locationOnParent = Convert.ToInt16(locationsline);
+				IUPACCompound compound = new IUPACCompound(locationOnParent, nameline);
+				
+				Formulas = new List<Formula>();
+				Formulas.Add(compound.Formula);
+			}
+			else
+			{
+				
+				List<string> locations = locationsline.Split(",".ToCharArray()).ToList();
+				string chainName = GeneralUtils.UtilStrings.RemovePrefix(nameline);
+				int chainLength = UtilChainLengths.FindSubChainLength(chainName);
+				
+				Formulas = new List<Formula>();
+				foreach(string location in locations)
+				{
+					Formula formula = new Formula(Convert.ToInt16(location), chainName);
+					Formulas.Add(formula);
+				}
+			}
 		}
 		
 

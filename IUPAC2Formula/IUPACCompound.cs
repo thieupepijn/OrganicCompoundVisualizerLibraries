@@ -52,6 +52,17 @@ namespace IUPAC2Formula
 			Formula = new Formula(chaintype, 0, mainChainLength, remaining);
 		}
 		
+		
+		public IUPACCompound(int locationOnParent, string name)
+		{
+			string chainDescription = FindSubChainPart(name);
+			int chainLength = UtilChainLengths.FindSubChainLength(chainDescription);
+			string remaining = "1-methyl";
+			Formula = new Formula(Enums.ChainTypes.Straight, locationOnParent, chainLength, remaining);
+		}
+		
+		
+		
 		public string ShowFormula()
 		{
 			return Formula.ToString();
@@ -85,6 +96,12 @@ namespace IUPAC2Formula
 				}
 			}
 			return String.Empty;
+		}
+		
+		
+		private string FindSubChainPart(string line)
+		{			
+			return "ethyl";	
 		}
 		
 		

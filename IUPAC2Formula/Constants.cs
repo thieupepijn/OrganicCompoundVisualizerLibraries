@@ -16,7 +16,7 @@ namespace IUPAC2Formula
 	public class Constants
 	{
 		
-		public const string StartBrakect = "(";
+		public const string StartBracket = "(";
 		public const string EndBracket = ")";
 		public const string GroupSeperator = "-";
 		public const string GroupSeperatorSubstitute = "&";

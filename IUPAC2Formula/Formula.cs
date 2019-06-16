@@ -52,12 +52,18 @@ namespace IUPAC2Formula
 			else
 			{
 				List <Formula> formulas = new List<Formula>();
-				List<string> lines = line.Split("-".ToCharArray()).ToList();
+				List<string> lines = UtilStrings.SplitOnlyOutsideBrackets(line, Constants.GroupSeperator, "#");
 				
 				for(int counter=0; counter<lines.Count;counter++)
 				{
 					line = lines[counter];
 					if (line.EndsWith(Constants.SubChainEnd, StringComparison.OrdinalIgnoreCase))
+					{
+						string locationsString = lines[counter-1];	
+						Group group = new Group(locationsString, line);
+						formulas.AddRange(group.Formulas);
+					}
+					else if((line.StartsWith(Constants.StartBracket, StringComparison.OrdinalIgnoreCase)) && (line.EndsWith(Constants.EndBracket, StringComparison.OrdinalIgnoreCase)))
 					{
 						string locationsString = lines[counter-1];	
 						Group group = new Group(locationsString, line);

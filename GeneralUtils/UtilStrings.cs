@@ -57,44 +57,7 @@ namespace GeneralUtils
 			return line;
 		}
 		
-		
-		public static string GetEverythingBetweenStartAndEnd(string start, string end, string line)
-		{
-			int startPosition = line.IndexOf(start);
-			int endPosition = line.LastIndexOf(end);
-			int difference = endPosition - startPosition;
-			
-			return line.Substring(startPosition+1, difference-1);
-		}
-		
-		
-		
-		public static string ReplaceEverythingBetweenStartAndEnd(string start, string end, string line, string replaceline)
-		{
-			
-			int startPosition = line.IndexOf(start);
-			int endPosition = line.LastIndexOf(end);
-			int difference = endPosition - startPosition;
-			
-			line = line.Remove(startPosition, difference+1);
-			return line.Insert(startPosition, replaceline);
-		}
-		
-		
-		public static string ReplaceOnlyBetweenStartAndEnd(string start, string end, string line, string target, string substitute)
-		{
-			
-			int startPosition = line.IndexOf(start);
-			int endPosition = line.LastIndexOf(end);
-			int difference = endPosition - startPosition;
-			
-			string substring = line.Substring(startPosition, difference);
-			string substringReplaced = substring.Replace(target, substitute);
-			
-			return line.Replace(substring, substringReplaced);
-		}
-		
-		
+	
 		public static string RemoveAtStart(string line, string away)
 		{
 			if (line.StartsWith(away))
@@ -144,7 +107,7 @@ namespace GeneralUtils
 			}
 			return lines;			
 		}
-		
+
 		
 		public static string ReplaceBetweenBrackets(string line, string target, string substitute)
 		{
