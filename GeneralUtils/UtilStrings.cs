@@ -71,6 +71,21 @@ namespace GeneralUtils
 		}
 		
 		
+		public static string RemoveAtEnd(string line, string away)
+		{
+			if (line.EndsWith(away))
+			{
+				int length = line.Length - away.Length;
+				
+				return line.Substring(0, length);
+			}
+			else
+			{
+				return line;
+			}
+		}
+		
+		
 		public static string RemovePrefix(string line)
 		{
 			if (line.StartsWith("di", StringComparison.OrdinalIgnoreCase))

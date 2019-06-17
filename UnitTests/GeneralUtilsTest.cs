@@ -36,6 +36,16 @@ namespace UnitTests
 		
 		
 		[Test]
+		public void RemoveAtEndTest()
+		{
+			string line = "1-methylpentyl";
+			string away = "pentyl";
+			
+			string stripped = UtilStrings.RemoveAtEnd(line, away);
+			StringAssert.AreEqualIgnoringCase("1-methyl", stripped);			
+		}
+		
+		[Test]
 		public void FindAllEndingSubstringsTest()
 		{
 			

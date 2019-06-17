@@ -57,7 +57,7 @@ namespace IUPAC2Formula
 		{
 			string chainDescription = FindSubChainPart(name);
 			int chainLength = UtilChainLengths.FindSubChainLength(chainDescription);
-			string remaining = "1-methyl";
+			string remaining = UtilStrings.RemoveAtEnd(name, chainDescription);
 			Formula = new Formula(Enums.ChainTypes.Straight, locationOnParent, chainLength, remaining);
 		}
 		
