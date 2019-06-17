@@ -7,6 +7,8 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GeneralUtils
 {
@@ -16,12 +18,39 @@ namespace GeneralUtils
 	public class UtilGroupNames
 	{
 		
-		public static string FindsubGroup(string inline)
+		public static string FindSubGroupOnEnd(string inline)
 		{
+			List<String> subLines = UtilStrings.FindAllEndingSubstrings(inline);
 			
-			return null;
-			
-			
+			foreach(string subLine in subLines)
+			{
+				
+				if (String.Equals(subLine, "methyl", StringComparison.OrdinalIgnoreCase))
+				{
+					return "methyl";
+				}
+				else if (String.Equals(subLine, "ethyl", StringComparison.OrdinalIgnoreCase))
+				{
+					return "ethyl";
+				}
+				else if (String.Equals(subLine, "propyl", StringComparison.OrdinalIgnoreCase))
+				{
+					return "propyl";
+				}
+				else if (String.Equals(subLine, "butyl", StringComparison.OrdinalIgnoreCase))
+				{
+					return "butyl";
+				}
+				else if (String.Equals(subLine, "pentyl", StringComparison.OrdinalIgnoreCase))
+				{
+					return "pentyl";
+				}
+				else if (String.Equals(subLine, "hexyl", StringComparison.OrdinalIgnoreCase))
+				{
+					return "hexyl";
+				}
+			}
+			return String.Empty;
 		}
 		
 		

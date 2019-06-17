@@ -42,8 +42,18 @@ namespace UnitTests
 			string line = "methylpentyl";
 			List<string> subStrings = UtilStrings.FindAllEndingSubstrings(line);
 			Assert.AreEqual(11, subStrings.Count);
-			
+		
 		}
+
+		[Test]
+		public void FindSubGroupOnEndTest()
+		{
+			string line = "1-methylpentyl";
+			string subgroup = UtilGroupNames.FindSubGroupOnEnd(line);
+			StringAssert.AreEqualIgnoringCase("pentyl", subgroup);
+		}
+
+
 		
 	}
 }

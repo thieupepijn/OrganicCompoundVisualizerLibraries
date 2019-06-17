@@ -101,7 +101,7 @@ namespace IUPAC2Formula
 		
 		private string FindSubChainPart(string line)
 		{			
-			return "ethyl";	
+			return UtilGroupNames.FindSubGroupOnEnd(line);
 		}
 		
 		
