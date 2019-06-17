@@ -34,5 +34,16 @@ namespace UnitTests
 			Assert.AreEqual(3, lines.Count, string.Empty);
 		}
 		
+		
+		[Test]
+		public void FindAllEndingSubstringsTest()
+		{
+			
+			string line = "methylpentyl";
+			List<string> subStrings = UtilStrings.FindAllEndingSubstrings(line);
+			Assert.AreEqual(11, subStrings.Count);
+			
+		}
+		
 	}
 }

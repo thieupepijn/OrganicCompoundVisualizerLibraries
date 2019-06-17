@@ -172,6 +172,23 @@ namespace GeneralUtils
 		
 		
 		
+		public static List<string> FindAllEndingSubstrings(string line)
+		{
+			List<string> subStrings = new List<string>(); 
+			
+			for(int counter=1;counter<line.Length;counter++)
+			{
+	
+				int start = line.Length - counter;
+				string subLine = line.Substring(start);
+				subStrings.Add(subLine);
+			}			
+			return subStrings;
+		}
+		
+		
+		
+		
 		
 	}
 }
