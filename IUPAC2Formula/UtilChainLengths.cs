@@ -19,8 +19,7 @@ namespace IUPAC2Formula
 		{
 			for (int counter=1;counter<11;counter++)
 			{
-				GreekNumberChainLength greekNumber = new GreekNumberChainLength(counter);
-				string countingWord = greekNumber.Prefix;
+				string countingWord = new CarbonSubChain(counter).Prefix;
 				if (line.StartsWith(countingWord, StringComparison.OrdinalIgnoreCase))
 				{
 					return counter;
@@ -32,9 +31,8 @@ namespace IUPAC2Formula
 		public static int FindSubChainLength(string line)
 		{
 			for (int counter=1;counter<11;counter++)
-			{
-				GreekNumberChainLength greekNumber = new GreekNumberChainLength(counter);
-				string subchainName = greekNumber.Prefix + "yl";
+			{				
+				string subchainName = new CarbonSubChain(counter).Name;
 				if (line.EndsWith(subchainName, StringComparison.OrdinalIgnoreCase))
 				{
 					return counter;

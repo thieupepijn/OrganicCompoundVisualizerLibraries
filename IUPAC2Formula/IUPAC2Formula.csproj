@@ -65,8 +65,6 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Formula.cs" />
-    <Compile Include="GreekNumberChainLength.cs" />
-    <Compile Include="GreekNumberSubchainsCount.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="IUPACCompound.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

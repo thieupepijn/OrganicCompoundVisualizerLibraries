@@ -101,7 +101,9 @@ namespace IUPAC2Formula
 		
 		private string FindSubChainPart(string line)
 		{			
-			return UtilGroupNames.FindSubGroupOnEnd(line);
+			List<string> subGroupNames = CarbonSubChain.GetAllNames();
+			string subGroupName = UtilStrings.FindPattern(line, subGroupNames);
+			return subGroupName;
 		}
 		
 		

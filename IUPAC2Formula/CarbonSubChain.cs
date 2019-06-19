@@ -18,11 +18,13 @@ namespace IUPAC2Formula
 	{
 		public int Length {get; set;}
 		public string Name {get; set;}
+		public string Prefix {get; set;}
 		
 		public CarbonSubChain(int length)
 		{
 			Length = length;
-			Name = GetName(Length);			
+			Name = GetName(Length);	
+			Prefix = Name.Replace("yl", String.Empty);
 		}
 		
 		public static List<String> GetAllNames()
@@ -61,6 +63,22 @@ namespace IUPAC2Formula
 			else if (length == 6)
 			{
 				return "hexyl";
+			}
+			else if (length == 7)
+			{
+				return "heptyl";
+			}
+			else if (length == 8)
+			{
+				return "octyl";
+			}
+			else if (length == 9)
+			{
+				return "nonyl";
+			}
+			else if (length == 10)
+			{
+				return "decyl";
 			}
 			else
 			{

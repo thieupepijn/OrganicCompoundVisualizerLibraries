@@ -65,13 +65,7 @@ namespace UnitTests
 		}
 		
 		
-		[Test]
-		public void FindSubGroupOnEndTest()
-		{
-			string line = "1-methylpentyl";
-			string subgroup = UtilGroupNames.FindSubGroupOnEnd(line);
-			StringAssert.AreEqualIgnoringCase("pentyl", subgroup);
-		}
+		
 
 
 		
