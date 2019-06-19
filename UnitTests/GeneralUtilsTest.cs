@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 using GeneralUtils;
+using IUPAC2Formula;
 
 namespace UnitTests
 {
@@ -50,11 +51,20 @@ namespace UnitTests
 		{
 			
 			string line = "methylpentyl";
-			List<string> subStrings = UtilStrings.FindAllEndingSubstrings(line);
-			Assert.AreEqual(11, subStrings.Count);
-		
+			List<string> subStrings = UtilStrings.FindAllEndings(line);
+			Assert.AreEqual(11, subStrings.Count);		
 		}
 
+		[Test]
+		public void FindSubGroupTest()
+		{
+			List<string> subGroups = CarbonSubChain.GetAllNames();
+			string line = "1-methylpentyl";
+			string subgroup = UtilStrings.FindPattern(line, subGroups);
+			StringAssert.AreEqualIgnoringCase("pentyl", subgroup);
+		}
+		
+		
 		[Test]
 		public void FindSubGroupOnEndTest()
 		{

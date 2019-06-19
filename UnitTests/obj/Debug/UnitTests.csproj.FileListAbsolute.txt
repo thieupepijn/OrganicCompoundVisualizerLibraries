@@ -6,3 +6,5 @@ C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\UnitTests
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\UnitTests\obj\Debug\UnitTests.csprojResolveAssemblyReference.cache
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\UnitTests\obj\Debug\UnitTests.dll
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\UnitTests\obj\Debug\UnitTests.pdb
+C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\UnitTests\bin\Debug\IUPAC2Formula.dll
+C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\UnitTests\bin\Debug\IUPAC2Formula.pdb

@@ -20,7 +20,7 @@ namespace GeneralUtils
 		
 		public static string FindSubGroupOnEnd(string inline)
 		{
-			List<String> subLines = UtilStrings.FindAllEndingSubstrings(inline);
+			List<String> subLines = UtilStrings.FindAllEndings(inline);
 			
 			foreach(string subLine in subLines)
 			{

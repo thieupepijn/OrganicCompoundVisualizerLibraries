@@ -187,7 +187,7 @@ namespace GeneralUtils
 		
 		
 		
-		public static List<string> FindAllEndingSubstrings(string line)
+		public static List<string> FindAllEndings(string line)
 		{
 			List<string> subStrings = new List<string>(); 
 			
@@ -202,6 +202,23 @@ namespace GeneralUtils
 		}
 		
 		
+		public static string FindPattern(string line, List<string> patterns)
+		{	
+			List<String> endings = UtilStrings.FindAllEndings(line);
+			patterns = patterns.OrderByDescending(p => p.Length).ToList();
+			
+			foreach(string ending in endings)
+			{
+				foreach(string pattern in patterns)
+				{
+					if (String.Equals(pattern, ending, StringComparison.OrdinalIgnoreCase))
+					{
+						return pattern;
+					}
+				}	
+			}
+			return null;		
+		}
 		
 		
 		

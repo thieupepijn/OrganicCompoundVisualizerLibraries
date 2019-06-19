@@ -55,6 +55,10 @@
       <Project>{74388f3e-f24e-4301-b091-27c934365912}</Project>
       <Name>GeneralUtils</Name>
     </ProjectReference>
+    <ProjectReference Include="..\IUPAC2Formula\IUPAC2Formula.csproj">
+      <Project>{a71b897a-d7d0-49de-8744-e4896b63e39e}</Project>
+      <Name>IUPAC2Formula</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
