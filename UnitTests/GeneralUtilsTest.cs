@@ -39,7 +39,7 @@ namespace UnitTests
 		public void RemovePrefixTest()
 		{
 			string line = "trimethyl";
-			string lineWithoutPrefix = UtilStrings.RemovePrefix(line);
+			string lineWithoutPrefix = Prefix.RemovePrefix(line);
 			StringAssert.AreEqualIgnoringCase("methyl", lineWithoutPrefix);
 		}
 		

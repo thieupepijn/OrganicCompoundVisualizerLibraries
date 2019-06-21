@@ -39,7 +39,7 @@ namespace IUPAC2Formula
 		{
 			ChainType = Enums.ChainTypes.Straight;
 			LocationOnParent = location;
-			Length = UtilChainLengths.FindSubChainLength(subchainname);
+			Length =  CarbonChain.FindSubChainLength(subchainname);
 			SubFormulas = new List<Formula>();
 		}
 		

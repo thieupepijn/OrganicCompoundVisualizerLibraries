@@ -85,32 +85,7 @@ namespace GeneralUtils
 			}
 		}
 		
-		
-		public static string RemovePrefix(string line)
-		{		
-			if (line.StartsWith("di", StringComparison.OrdinalIgnoreCase))
-			{
-				return RemoveAtStart(line, "di");
-			}
-			else if (line.StartsWith("tri", StringComparison.OrdinalIgnoreCase))
-			{
-				return RemoveAtStart(line, "tri");
-			}
-			else if (line.StartsWith("tetra", StringComparison.OrdinalIgnoreCase))
-			{
-				return RemoveAtStart(line, "tetra");
-			}
-			else if (line.StartsWith("penta", StringComparison.OrdinalIgnoreCase))
-			{
-				return RemoveAtStart(line, "penta");
-			}
-			else 
-			{
-				return line;
-			}	
-		}
-		
-		
+				
 		public static List<string> SplitOnlyOutsideBrackets(string line, string splitCharacter, string characterNotOccuringInLine)
 		{
 			string lineWithoutSplitCharactersBetweenBrackets = ReplaceBetweenBrackets(line, splitCharacter, characterNotOccuringInLine);			

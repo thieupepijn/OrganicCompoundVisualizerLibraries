@@ -38,6 +38,33 @@ namespace IUPAC2Formula
 			return names;
 		}
 		
+		public static int FindMainChainLength(string line)
+		{
+			for (int counter=1;counter<11;counter++)
+			{
+				string countingWord = new CarbonChain(counter).Prefix;
+				if (line.StartsWith(countingWord, StringComparison.OrdinalIgnoreCase))
+				{
+					return counter;
+				}
+			}
+			return 0;
+		}
+		
+		public static int FindSubChainLength(string line)
+		{
+			for (int counter=1;counter<11;counter++)
+			{				
+				string subchainName = new CarbonChain(counter).SubChainName;
+				if (line.EndsWith(subchainName, StringComparison.OrdinalIgnoreCase))
+				{
+					return counter;
+				}
+			}
+			return 0;
+		}
+		
+		
 		private string GetName(int length)
 		{
 			if (length == 1)

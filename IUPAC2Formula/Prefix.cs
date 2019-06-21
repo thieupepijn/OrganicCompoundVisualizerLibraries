@@ -8,6 +8,7 @@
  */
 using System;
 using System.Collections.Generic;
+using GeneralUtils;
 
 namespace IUPAC2Formula
 {
@@ -25,15 +26,29 @@ namespace IUPAC2Formula
 			PrefixWord = GetPrefixWord(PrefixNumber);
 		}
 		
-		public List<string> GetAllPrefixWords()
+		public static List<string> GetAllPrefixWords()
 		{
 			List<string> prefixWords = new List<string>();
 			for (int counter = 1; counter < 6; counter++)
 			{
 				string prefixWord = new Prefix(counter).PrefixWord;
-				prefixWords.Add(prefixWord);	
+				prefixWords.Add(prefixWord);
 			}
 			return prefixWords;
+		}
+		
+		public static string RemovePrefix(string line)
+		{
+			List<string> prefixWords = GetAllPrefixWords();
+			string prefixword = UtilStrings.FindPattern(line, prefixWords, UtilStrings.SearchDirection.Forward);
+			if (!String.IsNullOrEmpty(prefixword))
+			{
+				return UtilStrings.RemoveAtStart(line, prefixword);
+			}
+			else
+			{
+				return line;
+			}
 		}
 		
 		private string GetPrefixWord(int number)
@@ -58,10 +73,10 @@ namespace IUPAC2Formula
 			{
 				return "hexa";
 			}
-			else 
+			else
 			{
 				return string.Empty;
-			}	
+			}
 		}
 		
 		
