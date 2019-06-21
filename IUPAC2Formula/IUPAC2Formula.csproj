@@ -61,12 +61,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CarbonSubChain.cs" />
+    <Compile Include="CarbonChain.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Formula.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="IUPACCompound.cs" />
+    <Compile Include="Prefix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UtilChainLengths.cs" />
   </ItemGroup>

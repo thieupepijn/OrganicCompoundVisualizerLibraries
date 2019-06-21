@@ -87,7 +87,7 @@ namespace GeneralUtils
 		
 		
 		public static string RemovePrefix(string line)
-		{
+		{		
 			if (line.StartsWith("di", StringComparison.OrdinalIgnoreCase))
 			{
 				return RemoveAtStart(line, "di");
@@ -185,7 +185,19 @@ namespace GeneralUtils
 			return number;
 		}
 		
+		public static List<string> FindAllStartings(string line)
+		{
+			List<string> subStrings = new List<string>(); 
+			
+			for(int counter=1;counter<line.Length;counter++)
+			{	
+				string subLine = line.Substring(0, counter);
+				subStrings.Add(subLine);
+			}			
+			return subStrings;
+		}
 		
+		public enum SearchDirection { Forward, Backward }
 		
 		public static List<string> FindAllEndings(string line)
 		{
@@ -193,7 +205,6 @@ namespace GeneralUtils
 			
 			for(int counter=1;counter<line.Length;counter++)
 			{
-	
 				int start = line.Length - counter;
 				string subLine = line.Substring(start);
 				subStrings.Add(subLine);
@@ -202,16 +213,25 @@ namespace GeneralUtils
 		}
 		
 		
-		public static string FindPattern(string line, List<string> patterns)
+		public static string FindPattern(string line, List<string> patterns, SearchDirection searchdirection)
 		{	
-			List<String> endings = UtilStrings.FindAllEndings(line);
-			patterns = patterns.OrderByDescending(p => p.Length).ToList();
+			List<String> contents;
 			
-			foreach(string ending in endings)
+			if (searchdirection == SearchDirection.Forward)
+			{
+				contents = FindAllStartings(line);
+			}
+			else //Searchdirection == backward
+			{
+				contents = FindAllEndings(line);
+			}
+			
+			patterns = patterns.OrderByDescending(p => p.Length).ToList();	
+			foreach(string content in contents)
 			{
 				foreach(string pattern in patterns)
 				{
-					if (String.Equals(pattern, ending, StringComparison.OrdinalIgnoreCase))
+					if (String.Equals(pattern, content, StringComparison.OrdinalIgnoreCase))
 					{
 						return pattern;
 					}

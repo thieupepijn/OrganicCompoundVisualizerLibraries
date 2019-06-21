@@ -14,25 +14,25 @@ namespace IUPAC2Formula
 	/// <summary>
 	/// Description of CarbonSubChain.
 	/// </summary>
-	public class CarbonSubChain
+	public class CarbonChain
 	{
 		public int Length {get; set;}
-		public string Name {get; set;}
+		public string SubChainName {get; set;}
 		public string Prefix {get; set;}
 		
-		public CarbonSubChain(int length)
+		public CarbonChain(int length)
 		{
 			Length = length;
-			Name = GetName(Length);	
-			Prefix = Name.Replace("yl", String.Empty);
+			SubChainName = GetName(Length);	
+			Prefix = SubChainName.Replace("yl", String.Empty);
 		}
 		
-		public static List<String> GetAllNames()
+		public static List<String> GetAllSubChainNames()
 		{
 			List<string> names = new List<string>();
 			for (int counter = 1; counter < 7; counter++)
 			{
-				string name = new CarbonSubChain(counter).Name;
+				string name = new CarbonChain(counter).SubChainName;
 				names.Add(name);	
 			}
 			return names;

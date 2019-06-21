@@ -35,6 +35,14 @@ namespace UnitTests
 			Assert.AreEqual(3, lines.Count, string.Empty);
 		}
 		
+		[Test]
+		public void RemovePrefixTest()
+		{
+			string line = "trimethyl";
+			string lineWithoutPrefix = UtilStrings.RemovePrefix(line);
+			StringAssert.AreEqualIgnoringCase("methyl", lineWithoutPrefix);
+		}
+		
 		
 		[Test]
 		public void RemoveAtEndTest()
@@ -47,9 +55,16 @@ namespace UnitTests
 		}
 		
 		[Test]
+		public void FindAllStartingsSubstringsTest()
+		{		
+			string line = "methylpentyl";
+			List<string> subStrings = UtilStrings.FindAllStartings(line);
+			Assert.AreEqual(11, subStrings.Count);		
+		}
+		
+		[Test]
 		public void FindAllEndingSubstringsTest()
-		{
-			
+		{			
 			string line = "methylpentyl";
 			List<string> subStrings = UtilStrings.FindAllEndings(line);
 			Assert.AreEqual(11, subStrings.Count);		
@@ -58,9 +73,9 @@ namespace UnitTests
 		[Test]
 		public void FindSubGroupTest()
 		{
-			List<string> subGroups = CarbonSubChain.GetAllNames();
+			List<string> subGroups = CarbonChain.GetAllSubChainNames();
 			string line = "1-methylpentyl";
-			string subgroup = UtilStrings.FindPattern(line, subGroups);
+			string subgroup = UtilStrings.FindPattern(line, subGroups, UtilStrings.SearchDirection.Backward);
 			StringAssert.AreEqualIgnoringCase("pentyl", subgroup);
 		}
 		

@@ -19,7 +19,7 @@ namespace IUPAC2Formula
 		{
 			for (int counter=1;counter<11;counter++)
 			{
-				string countingWord = new CarbonSubChain(counter).Prefix;
+				string countingWord = new CarbonChain(counter).Prefix;
 				if (line.StartsWith(countingWord, StringComparison.OrdinalIgnoreCase))
 				{
 					return counter;
@@ -32,7 +32,7 @@ namespace IUPAC2Formula
 		{
 			for (int counter=1;counter<11;counter++)
 			{				
-				string subchainName = new CarbonSubChain(counter).Name;
+				string subchainName = new CarbonChain(counter).SubChainName;
 				if (line.EndsWith(subchainName, StringComparison.OrdinalIgnoreCase))
 				{
 					return counter;
