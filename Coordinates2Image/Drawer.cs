@@ -25,6 +25,19 @@ namespace Coordinates2Image
 		private List<Vertice> _vertices;
 		private int _imageWidth;
 		private int _imageHeight;
+		private Brush _drawingColor;
+		private Color _backgroundColor;
+		
+		public Drawer(List<Node> nodes, List<Vertice> vertices, int imageWidth, int imageHeight, Brush drawingColor, Color backGroundColor)
+		{
+			_nodes = nodes;
+			_vertices = vertices;
+			_imageWidth = imageWidth;
+			_imageHeight = imageHeight;
+			_drawingColor = drawingColor;
+			_backgroundColor = backGroundColor;					
+		}
+		
 		
 		public Drawer(List<Node> nodes, List<Vertice> vertices, int imageWidth, int imageHeight)
 		{
@@ -32,14 +45,18 @@ namespace Coordinates2Image
 			_vertices = vertices;
 			_imageWidth = imageWidth;
 			_imageHeight = imageHeight;
+			_drawingColor = Brushes.Black;
+			_backgroundColor = Color.White;
 		}
 		
-		
+				
 		public Bitmap Draw2Bitmap()
 		{
 			Bitmap bitmap = new Bitmap(_imageWidth, _imageHeight);
+		
 			using (Graphics graafix = Graphics.FromImage(bitmap))
 			{
+				graafix.Clear(_backgroundColor);
 				DrawNodes(_nodes, graafix);
 				DrawVertices(_vertices, graafix);
 				return bitmap;
@@ -74,7 +91,7 @@ namespace Coordinates2Image
 		{
 			foreach(Node node in nodes)
 			{
-				graafix.FillEllipse(Brushes.Red, node.Location.X, node.Location.Y, 25, 25);
+				graafix.FillEllipse(_drawingColor, node.Location.X, node.Location.Y, 25, 25);
 			}
 		}
 		
@@ -89,7 +106,7 @@ namespace Coordinates2Image
 				int x2 = Average(vertice.Node2.Location.X, vertice.Node2.Location.X + 25);
 				int y2 = Average(vertice.Node2.Location.Y, vertice.Node2.Location.Y + 25);
 				
-				graafix.DrawLine(new Pen(Color.Red, 2), x1, y1, x2, y2);
+				graafix.DrawLine(new Pen(_drawingColor, 2), x1, y1, x2, y2);
 			}
 		}
 		
