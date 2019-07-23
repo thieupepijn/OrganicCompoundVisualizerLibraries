@@ -21,6 +21,8 @@ namespace Coordinates2Image
 	public class Drawer
 	{
 		
+		private const string MEASURINGSTRING = "CCC";
+		
 		private List<Node> _nodes;
 		private List<Vertice> _vertices;
 		private int _imageWidth;
@@ -58,7 +60,7 @@ namespace Coordinates2Image
 			{
 				graafix.Clear(_backgroundColor);
 				FontFamily fontFamily = new FontFamily("Arial");
-				Font font = new Font(fontFamily, 25, FontStyle.Regular, GraphicsUnit.Pixel);
+				Font font = new Font(fontFamily, 15, FontStyle.Regular, GraphicsUnit.Pixel);
 				DrawVertices(_vertices, graafix, font);
 				DrawNodes(_nodes, graafix, font);
 				return bitmap;
@@ -94,19 +96,31 @@ namespace Coordinates2Image
 			foreach(Node node in nodes)
 			{
 				int x, y, width, height;
-				GetDrawingLocationAndSize(node, graafix, font, out x, out y, out width, out height);
-				graafix.FillEllipse(Brushes.Pink, x, y, width, height);
-				graafix.DrawString("C", font, _drawingColor, x, y);
+				GetDrawingLocationAndSize(node, graafix, MEASURINGSTRING, font, out x, out y, out width, out height);
+				graafix.FillEllipse(Brushes.Aquamarine, x, y, width, height);
+				GetDrawingLocationAndSize(node, graafix, "C4", font, out x, out y, out width, out height);
+				graafix.DrawString("C4", font, _drawingColor, x, y);
 			}
 		}
 		
-		private void GetDrawingLocationAndSize(Node node, Graphics graafix, Font font, out int x, out int y, out int width, out int height)
+		private void GetDrawingLocationAndSize(Node node, Graphics graafix, string measurestring, Font font, out int x, out int y, out int width, out int height)
 		{
-			SizeF size = graafix.MeasureString("C", font);
-			x = (int)(node.Location.X - (0.5 * size.Width));
-			y = (int)(node.Location.Y - (0.5 * size.Height));
-			width = (int)size.Width;
-			height = (int)size.Height;
+			SizeF size = graafix.MeasureString(measurestring, font);
+			
+			if (size.Height > size.Width)
+			{
+				x = (int)(node.Location.X - (0.5 * size.Height));
+				y = (int)(node.Location.Y - (0.5 * size.Height));
+				width = (int)size.Height;
+				height = (int)size.Height;
+			}
+			else
+			{
+				x = (int)(node.Location.X - (0.5 * size.Width));
+				y = (int)(node.Location.Y - (0.5 * size.Width));
+				width = (int)size.Width;
+				height = (int)size.Width;
+			}
 		}
 		
 		
@@ -115,12 +129,12 @@ namespace Coordinates2Image
 			foreach(Vertice vertice in vertices)
 			{
 				int x1, y1, width1, height1;
-				GetDrawingLocationAndSize(vertice.Node1, graafix, font, out x1, out y1, out width1, out height1);
+				GetDrawingLocationAndSize(vertice.Node1, graafix, MEASURINGSTRING, font, out x1, out y1, out width1, out height1);
 				x1 += (int)(width1 / 2);
 				y1 += (int)(height1 / 2);
 				
 				int x2, y2, width2, height2;
-				GetDrawingLocationAndSize(vertice.Node2, graafix, font, out x2, out y2, out width2, out height2);
+				GetDrawingLocationAndSize(vertice.Node2, graafix, MEASURINGSTRING, font, out x2, out y2, out width2, out height2);
 				x2 += (int)(width2 / 2);
 				y2 += (int)(height2 / 2);
 				

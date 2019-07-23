@@ -20,7 +20,7 @@ using Coordinates2Image;
 
 namespace IUPAC2Image
 {
-	
+
 	public class IUPAC2ImageConverter
 	{
 		
