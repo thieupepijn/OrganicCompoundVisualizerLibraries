@@ -27,18 +27,22 @@ namespace Coordinates2Image
 		private List<Vertice> _vertices;
 		private int _imageWidth;
 		private int _imageHeight;
+		private int _fontSize;
+		private int _lineThickness;
 		private Color _backgroundColor;	
 		private Brush _letterColor;
 		private Brush _ballsColor;
 		private Brush _linesColor;
 		
 		
-		public Drawer(List<Node> nodes, List<Vertice> vertices, int imageWidth, int imageHeight, Color backGroundColor, Brush letterColor, Brush ballsColor, Brush linesColor)
+		public Drawer(List<Node> nodes, List<Vertice> vertices, int imageWidth, int imageHeight, int fontsize, int lineThicknes, Color backGroundColor, Brush letterColor, Brush ballsColor, Brush linesColor)
 		{
 			_nodes = nodes;
 			_vertices = vertices;
 			_imageWidth = imageWidth;
 			_imageHeight = imageHeight;
+			_fontSize = fontsize;
+			_lineThickness = lineThicknes;
 			_backgroundColor = backGroundColor;
 			_letterColor = letterColor;
 			_ballsColor = ballsColor;
@@ -46,13 +50,15 @@ namespace Coordinates2Image
 		}
 		
 		
-		public Drawer(List<Node> nodes, List<Vertice> vertices, int imageWidth, int imageHeight)
+		public Drawer(List<Node> nodes, List<Vertice> vertices, int imageWidth, int imageHeight, int fontsize, int lineThicknes)
 		{
 			_nodes = nodes;
 			_vertices = vertices;
 			_imageWidth = imageWidth;
 			_imageHeight = imageHeight;
 			_letterColor = Brushes.Black;
+			_fontSize = fontsize;
+			_lineThickness = lineThicknes;
 			_backgroundColor = Color.White;
 			_ballsColor = Brushes.White;
 			_linesColor = Brushes.Black;
@@ -67,7 +73,7 @@ namespace Coordinates2Image
 			{
 				graafix.Clear(_backgroundColor);
 				FontFamily fontFamily = new FontFamily("Arial");
-				Font font = new Font(fontFamily, 15, FontStyle.Regular, GraphicsUnit.Pixel);
+				Font font = new Font(fontFamily, _fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
 				DrawVertices(_vertices, graafix, font);
 				DrawNodes(_nodes, graafix, font);
 				return bitmap;
@@ -145,7 +151,7 @@ namespace Coordinates2Image
 				x2 += (int)(width2 / 2);
 				y2 += (int)(height2 / 2);
 				
-				graafix.DrawLine(new Pen(_linesColor, 2), x1, y1, x2, y2);
+				graafix.DrawLine(new Pen(_linesColor, _lineThickness), x1, y1, x2, y2);
 			}
 		}
 		
