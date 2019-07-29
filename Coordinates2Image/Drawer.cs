@@ -27,17 +27,22 @@ namespace Coordinates2Image
 		private List<Vertice> _vertices;
 		private int _imageWidth;
 		private int _imageHeight;
-		private Brush _drawingColor;
-		private Color _backgroundColor;
+		private Color _backgroundColor;	
+		private Brush _letterColor;
+		private Brush _ballsColor;
+		private Brush _linesColor;
 		
-		public Drawer(List<Node> nodes, List<Vertice> vertices, int imageWidth, int imageHeight, Brush drawingColor, Color backGroundColor)
+		
+		public Drawer(List<Node> nodes, List<Vertice> vertices, int imageWidth, int imageHeight, Color backGroundColor, Brush letterColor, Brush ballsColor, Brush linesColor)
 		{
 			_nodes = nodes;
 			_vertices = vertices;
 			_imageWidth = imageWidth;
 			_imageHeight = imageHeight;
-			_drawingColor = drawingColor;
 			_backgroundColor = backGroundColor;
+			_letterColor = letterColor;
+			_ballsColor = ballsColor;
+			_linesColor = linesColor;
 		}
 		
 		
@@ -47,8 +52,10 @@ namespace Coordinates2Image
 			_vertices = vertices;
 			_imageWidth = imageWidth;
 			_imageHeight = imageHeight;
-			_drawingColor = Brushes.Black;
+			_letterColor = Brushes.Black;
 			_backgroundColor = Color.White;
+			_ballsColor = Brushes.White;
+			_linesColor = Brushes.Black;
 		}
 		
 		
@@ -97,9 +104,9 @@ namespace Coordinates2Image
 			{
 				int x, y, width, height;
 				GetDrawingLocationAndSize(node, graafix, MEASURINGSTRING, font, out x, out y, out width, out height);
-				graafix.FillEllipse(Brushes.Aquamarine, x, y, width, height);
+				graafix.FillEllipse(_ballsColor, x, y, width, height);
 				GetDrawingLocationAndSize(node, graafix, "C4", font, out x, out y, out width, out height);
-				graafix.DrawString("C4", font, _drawingColor, x, y);
+				graafix.DrawString("C4", font, _letterColor, x, y);
 			}
 		}
 		
@@ -138,7 +145,7 @@ namespace Coordinates2Image
 				x2 += (int)(width2 / 2);
 				y2 += (int)(height2 / 2);
 				
-				graafix.DrawLine(new Pen(_drawingColor, 2), x1, y1, x2, y2);
+				graafix.DrawLine(new Pen(_linesColor, 2), x1, y1, x2, y2);
 			}
 		}
 		

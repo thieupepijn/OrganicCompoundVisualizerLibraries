@@ -27,26 +27,44 @@ namespace IUPAC2Image
 		Drawer _drawer;
 		
 		public IUPAC2ImageConverter(string iupacName, int imageWidth, int imageHeight)
+		{	
+			List<Graph2Coordinates.Node> nodes;
+			List<Graph2Coordinates.Vertice> vertices;		
+			GetNodesAndVertices(iupacName, imageWidth, imageHeight, out nodes, out vertices);	
+			_drawer = new Drawer(nodes, vertices, imageWidth, imageHeight); 
+		}
+		
+		
+		public IUPAC2ImageConverter(string iupacName, int imageWidth, int imageHeight, Color backGroundColor, Brush letterColor, Brush ballsColor, Brush linesColor)
 		{
+			List<Graph2Coordinates.Node> nodes;
+			List<Graph2Coordinates.Vertice> vertices;
 			
+			GetNodesAndVertices(iupacName, imageWidth, imageHeight, out nodes, out vertices);			
+			_drawer = new Drawer(nodes, vertices, imageWidth, imageHeight, backGroundColor, letterColor, ballsColor, linesColor);	
+		}
+		
+		private void GetNodesAndVertices(string iupacName, int imageWidth, int imageHeight, out List<Graph2Coordinates.Node> nodes, out List<Graph2Coordinates.Vertice> vertices)
+		{
 			string formula = GetFormula(iupacName);
 			Chain graph = GetGraph(formula);
 			
 			string nodesLine = GraphNodes2Line(graph);
 			List<string> verticesLines = GraphVertices2Lines(graph);
 			
-			List<Graph2Coordinates.Node> nodes = new List<Graph2Coordinates.Node>();
+			nodes = new List<Graph2Coordinates.Node>();
 			UtilNodesAndVertices.InitNodesFromLine(nodesLine, nodes);
 			
-			List<Graph2Coordinates.Vertice> vertices = new List<Graph2Coordinates.Vertice>();
+			vertices = new List<Graph2Coordinates.Vertice>();
 			UtilNodesAndVertices.InitVerticesFromLines(verticesLines, nodes, vertices);
 			
 			UtilNodesAndVertices.InitializeNodeLocations(nodes, vertices);
 			UtilNodesAndVertices.RemoveUnConnectedNodes(nodes, vertices);
 			UtilNodesAndVertices.Reposition(nodes, vertices, imageWidth, imageHeight);
-			
-			_drawer = new Drawer(nodes, vertices, imageWidth, imageHeight);	
 		}
+		
+		
+		
 		
 		public Bitmap DrawToBitmap()
 		{
