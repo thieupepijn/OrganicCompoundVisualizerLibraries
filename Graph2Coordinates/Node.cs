@@ -15,30 +15,30 @@ namespace Graph2Coordinates
 	{
 
 
-		public int Number {get; private set;}
+		public int IdNumber {get; private set;}
 		public Node ParentNode = null;
 		public Location Location = null;
 		
 		public Node(int number, Node parentNode)
 		{
-			Number = number;
+			IdNumber = number;
 			ParentNode = parentNode;
 		}
 		
 		public Node(string line, List<Node> nodes)
 		{
 			string[] elements = line.Split(",".ToCharArray());
-			Number = Convert.ToInt16(elements[0]);
-					
+			IdNumber = Convert.ToInt16(elements[0]);
+			
 			if(!String.IsNullOrEmpty(elements[1]))
 			{
 				int parentNodeNumber = Convert.ToInt16(elements[1]);
-				ParentNode = nodes.Find(node => node.Number == parentNodeNumber);
+				ParentNode = nodes.Find(node => node.IdNumber == parentNodeNumber);
 			}
 			else
 			{
-			   ParentNode = null;
-			}				
+				ParentNode = null;
+			}
 		}
 		
 		
@@ -54,18 +54,18 @@ namespace Graph2Coordinates
 				List<Node> nodesBefore =   new List<Node>(nodes).GetRange(0, counter);
 				nodesBefore.RemoveAll(node => node == ParentNode);
 				Location = circle.LocationMostFarAway(nodesBefore);
-			}	
+			}
 			else //circle-center parent-node
 			{
 				List<Node> childNodes = ParentNode.ChildNodes(nodes);
 				int childNumber = childNodes.FindIndex(n => n == this);
-				int angle = (360 / childNodes.Count) * childNumber;				
+				int angle = (360 / childNodes.Count) * childNumber;
 				Circle circle = new Circle(ParentNode.Location, Constants.DistanceBetweenPoints, childNodes.Count);
-				Location = circle.CircumenferenceAtAngle(angle);		
+				Location = circle.CircumenferenceAtAngle(angle);
 			}
 		}
 		
-				
+		
 		public bool IsConnected(Node otherNode, List<Vertice> vertices)
 		{
 			foreach(Vertice vertice in vertices)
@@ -81,8 +81,8 @@ namespace Graph2Coordinates
 			}
 			return false;
 		}
-				
-	public List<Node> ConnectedNodes(List<Vertice> vertices)
+		
+		public List<Node> ConnectedNodes(List<Vertice> vertices)
 		{
 			List<Node> nodes = new List<Node>();
 			foreach(Vertice vertice in vertices)
@@ -109,7 +109,26 @@ namespace Graph2Coordinates
 			else
 			{
 				return false;
-			}				
+			}
+		}
+		
+		public string Description(List<Vertice> vertices)
+		{
+			List<Node> connectedNodes = ConnectedNodes(vertices);
+			int numberOfHydrogens = 4 - connectedNodes.Count;
+			
+			if (numberOfHydrogens == 0)
+			{
+				return "C";
+			}
+			else if (numberOfHydrogens == 1)
+			{
+				return "CH";
+			}
+			else
+			{
+				return "CH" + numberOfHydrogens.ToString();
+			}
 		}
 		
 		
@@ -134,7 +153,7 @@ namespace Graph2Coordinates
 		
 		public override string ToString()
 		{
-			return Number.ToString();
+			return IdNumber.ToString();
 		}
 		
 		
@@ -149,23 +168,23 @@ namespace Graph2Coordinates
 			{
 				return false;
 			}
-			else 
+			else
 			{
 				Node otherNode = (Node)obj;
-				if (otherNode.Number == Number)
+				if (otherNode.IdNumber == IdNumber)
 				{
 					return true;
 				}
-				else 
+				else
 				{
 					return false;
-				}	
+				}
 			}
 		}
 
 		public override int GetHashCode()
 		{
-			return Number;
+			return IdNumber;
 		}
 
 		public static bool operator == (Node lhs, Node rhs)
@@ -180,7 +199,7 @@ namespace Graph2Coordinates
 			}
 		}
 		
-		public static bool operator != (Node lhs, Node rhs) 
+		public static bool operator != (Node lhs, Node rhs)
 		{
 			return !(lhs == rhs);
 		}
@@ -189,6 +208,6 @@ namespace Graph2Coordinates
 		
 		
 		
-	
+		
 	}
 }

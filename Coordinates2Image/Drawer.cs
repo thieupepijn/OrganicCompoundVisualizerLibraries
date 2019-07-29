@@ -21,7 +21,7 @@ namespace Coordinates2Image
 	public class Drawer
 	{
 		
-		private const string MEASURINGSTRING = "CCC";
+		private const string MEASURINGSTRING = "CCCC";
 		
 		private List<Node> _nodes;
 		private List<Vertice> _vertices;
@@ -47,6 +47,8 @@ namespace Coordinates2Image
 			_letterColor = letterColor;
 			_ballsColor = ballsColor;
 			_linesColor = linesColor;
+			
+			//_vertices[0].ThickNess = 3;
 		}
 		
 		
@@ -75,7 +77,7 @@ namespace Coordinates2Image
 				FontFamily fontFamily = new FontFamily("Arial");
 				Font font = new Font(fontFamily, _fontSize, FontStyle.Regular, GraphicsUnit.Pixel);
 				DrawVertices(_vertices, graafix, font);
-				DrawNodes(_nodes, graafix, font);
+				DrawNodes(_nodes, _vertices, graafix, font);
 				return bitmap;
 			}
 		}
@@ -104,15 +106,15 @@ namespace Coordinates2Image
 		}
 		
 		
-		private void DrawNodes(List<Node> nodes, Graphics graafix, Font font)
+		private void DrawNodes(List<Node> nodes, List<Vertice> vertices, Graphics graafix, Font font)
 		{
 			foreach(Node node in nodes)
 			{
 				int x, y, width, height;
 				GetDrawingLocationAndSize(node, graafix, MEASURINGSTRING, font, out x, out y, out width, out height);
 				graafix.FillEllipse(_ballsColor, x, y, width, height);
-				GetDrawingLocationAndSize(node, graafix, "C4", font, out x, out y, out width, out height);
-				graafix.DrawString("C4", font, _letterColor, x, y);
+				GetDrawingLocationAndSize(node, graafix, node.Description(vertices), font, out x, out y, out width, out height);
+				graafix.DrawString(node.Description(vertices), font, _letterColor, x, y);
 			}
 		}
 		
@@ -151,7 +153,7 @@ namespace Coordinates2Image
 				x2 += (int)(width2 / 2);
 				y2 += (int)(height2 / 2);
 				
-				graafix.DrawLine(new Pen(_linesColor, _lineThickness), x1, y1, x2, y2);
+				graafix.DrawLine(new Pen(_linesColor, vertice.ThickNess * _lineThickness), x1, y1, x2, y2);
 			}
 		}
 		

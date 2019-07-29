@@ -14,44 +14,7 @@ namespace Graph2Coordinates
 {
 	public class UtilNodesAndVertices
 	{
-
-		private static Random _random = new Random();
-		
-		public static void InitRandomNodesAndVertices(List<Node> nodes, List<Vertice> vertices)
-		{
-			for (int counter=0;counter<30;counter++)
-			{
-				Node parentNode = GetRandomNode(nodes);
-				Node node =  new Node(counter, parentNode);
-				if (parentNode != null)
-				{
-					Vertice vertice = new Vertice(node, parentNode);
-					vertices.Add(vertice);
-				}
-				nodes.Add(node);
-			}
-		}
-		
-		private static Node GetRandomNode(List<Node> nodes)
-		{
-			if ((nodes == null) || (nodes.Count < 1))
-			{
-				return null;
-			}
-			else
-			{
-				int indexNumber = _random.Next(0, nodes.Count -1);
-				return nodes[indexNumber];
-			}
-		}
-		
-//		public static void InitNodesAndVerticesFromLines(List<string> lines, List<Node> nodes, List<Vertice> vertices)
-//		{
-//			InitNodesFromLine(lines[0], nodes);
-//			lines.RemoveAt(0);
-//			InitVerticesFromLines(lines, nodes, vertices);
-//		}
-		
+		//TODO MOST OF THIS SHOULD GO TO CLASSES NODES OR VERTICES
 		public static void InitNodesFromLine(string line, List<Node> nodes)
 		{
 			string[] nodeElements = line.Split(";".ToCharArray());
@@ -66,7 +29,7 @@ namespace Graph2Coordinates
 		{
 			foreach(string line in lines)
 			{
-				Vertice vertice = new Vertice(line, nodes);
+				Vertice vertice = new Vertice(line, nodes, 1);
 				vertices.Add(vertice);
 			}
 		}

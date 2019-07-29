@@ -16,40 +16,30 @@ namespace Graph2Coordinates
 
         public Node Node1;
         public Node Node2;
+        public int ThickNess;
 
-        public Vertice(Node node1, Node node2)
+        public Vertice(Node node1, Node node2, int thickNess)
         {
             Node1 = node1;
             Node2 = node2;
+            ThickNess = thickNess;
         }
         
-        public Vertice(string line, List<Node> nodes)
+        public Vertice(string line, List<Node> nodes, int thickNess)
         {
         	string[] elements = line.Split(",".ToCharArray());
         	int nodeNumber1 = Convert.ToInt16(elements[0]);
         	int nodeNumber2 = Convert.ToInt16(elements[1]);
-        	Node1 = nodes.Find(node => node.Number == nodeNumber1);
-        	Node2 = nodes.Find(node => node.Number == nodeNumber2);	
+        	Node1 = nodes.Find(node => node.IdNumber == nodeNumber1);
+        	Node2 = nodes.Find(node => node.IdNumber == nodeNumber2);	
+        	ThickNess = thickNess;
         }
         
         
-          
-//        public void Draw(Canvas canvas)
-//        {
-//        	Line line = new Line();
-//        	line.Stroke = new SolidColorBrush(Colors.Red);
-//        	line.StrokeThickness = 3;
-//        	
-//        	line.X1 = Node1.Location.X + 10;
-//        	line.Y1 = Node1.Location.Y + 10;
-//        	line.X2 = Node2.Location.X + 10;
-//        	line.Y2 = Node2.Location.Y + 10;
-//        	canvas.Children.Add(line); 	
-//        }
         
 		public override string ToString()
 		{
-			return string.Format("{0}, {1}", Node1.Number, Node2.Number);
+			return string.Format("{0}, {1}", Node1.IdNumber, Node2.IdNumber);
 		}
 
     }
