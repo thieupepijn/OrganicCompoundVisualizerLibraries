@@ -34,11 +34,11 @@ namespace Graph2Coordinates
 			}
 		}
 		
-		public static void InitializeNodeLocations(List<Node> nodes, List<Vertice> vertices)
+		public static void InitializeNodeLocations(List<Node> nodes, List<Vertice> vertices, int distanceBetweenPoints)
 		{
 			for(int counter=0; counter<nodes.Count;counter++)
 			{
-				nodes[counter].Initlocation(nodes, vertices, counter);
+				nodes[counter].InitLocation(nodes, vertices, counter, distanceBetweenPoints);
 			}
 		}
 		

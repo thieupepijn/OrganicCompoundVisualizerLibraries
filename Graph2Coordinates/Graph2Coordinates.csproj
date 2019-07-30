@@ -59,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Circle.cs" />
-    <Compile Include="Constants.cs" />
     <Compile Include="Dimensions.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Location.cs" />

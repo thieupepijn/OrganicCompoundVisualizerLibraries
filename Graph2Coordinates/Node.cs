@@ -42,7 +42,7 @@ namespace Graph2Coordinates
 		}
 		
 		
-		public void Initlocation(List<Node> nodes, List<Vertice> vertices, int counter)
+		public void InitLocation(List<Node> nodes, List<Vertice> vertices, int counter, int distanceBetweenPoints)
 		{
 			if (ParentNode == null)
 			{
@@ -50,7 +50,7 @@ namespace Graph2Coordinates
 			}
 			else if (ParentNode.IsConnected(vertices)) //normal parent-node
 			{
-				Circle circle = new Circle(ParentNode.Location, Constants.DistanceBetweenPoints);
+				Circle circle = new Circle(ParentNode.Location, distanceBetweenPoints);
 				List<Node> nodesBefore =   new List<Node>(nodes).GetRange(0, counter);
 				nodesBefore.RemoveAll(node => node == ParentNode);
 				Location = circle.LocationMostFarAway(nodesBefore);
@@ -60,7 +60,7 @@ namespace Graph2Coordinates
 				List<Node> childNodes = ParentNode.ChildNodes(nodes);
 				int childNumber = childNodes.FindIndex(n => n == this);
 				int angle = (360 / childNodes.Count) * childNumber;
-				Circle circle = new Circle(ParentNode.Location, Constants.DistanceBetweenPoints, childNodes.Count);
+				Circle circle = new Circle(ParentNode.Location, distanceBetweenPoints, childNodes.Count);
 				Location = circle.CircumenferenceAtAngle(angle);
 			}
 		}
