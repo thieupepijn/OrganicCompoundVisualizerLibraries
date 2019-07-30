@@ -35,11 +35,19 @@ namespace Graph2Coordinates
         	ThickNess = thickNess;
         }
         
-        
-        
+              
 		public override string ToString()
 		{
 			return string.Format("{0}, {1}", Node1.IdNumber, Node2.IdNumber);
+		}
+		
+		public static void InitVerticesFromLines(List<string> lines, List<Node> nodes, List<Vertice> vertices)
+		{
+			foreach(string line in lines)
+			{
+				Vertice vertice = new Vertice(line, nodes, 1);
+				vertices.Add(vertice);
+			}
 		}
 
     }

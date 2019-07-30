@@ -28,31 +28,31 @@ namespace Coordinates2Image
 		private int _imageWidth;
 		private int _imageHeight;
 		private int _fontSize;
-		private int _lineThickness;
+		private int _verticeThickness;
 		private Color _backgroundColor;	
 		private Brush _letterColor;
-		private Brush _ballsColor;
-		private Brush _linesColor;
+		private Brush _nodeColor;
+		private Brush _verticeColor;
 		
 		
-		public Drawer(List<Node> nodes, List<Vertice> vertices, int imageWidth, int imageHeight, int fontsize, int lineThicknes, Color backGroundColor, Brush letterColor, Brush ballsColor, Brush linesColor)
+		public Drawer(List<Node> nodes, List<Vertice> vertices, int imageWidth, int imageHeight, int fontSize, int verticeThicknes, Color backGroundColor, Brush letterColor, Brush nodeColor, Brush verticeColor)
 		{
 			_nodes = nodes;
 			_vertices = vertices;
 			_imageWidth = imageWidth;
 			_imageHeight = imageHeight;
-			_fontSize = fontsize;
-			_lineThickness = lineThicknes;
+			_fontSize = fontSize;
+			_verticeThickness = verticeThicknes;
 			_backgroundColor = backGroundColor;
 			_letterColor = letterColor;
-			_ballsColor = ballsColor;
-			_linesColor = linesColor;
+			_nodeColor = nodeColor;
+			_verticeColor = verticeColor;
 			
 			//_vertices[0].ThickNess = 3;
 		}
 		
 		
-		public Drawer(List<Node> nodes, List<Vertice> vertices, int imageWidth, int imageHeight, int fontsize, int lineThicknes)
+		public Drawer(List<Node> nodes, List<Vertice> vertices, int imageWidth, int imageHeight, int fontsize, int verticeThicknes)
 		{
 			_nodes = nodes;
 			_vertices = vertices;
@@ -60,10 +60,10 @@ namespace Coordinates2Image
 			_imageHeight = imageHeight;
 			_letterColor = Brushes.Black;
 			_fontSize = fontsize;
-			_lineThickness = lineThicknes;
+			_verticeThickness = verticeThicknes;
 			_backgroundColor = Color.White;
-			_ballsColor = Brushes.White;
-			_linesColor = Brushes.Black;
+			_nodeColor = Brushes.White;
+			_verticeColor = Brushes.Black;
 		}
 		
 		
@@ -112,7 +112,7 @@ namespace Coordinates2Image
 			{
 				int x, y, width, height;
 				GetDrawingLocationAndSize(node, graafix, MEASURINGSTRING, font, out x, out y, out width, out height);
-				graafix.FillEllipse(_ballsColor, x, y, width, height);
+				graafix.FillEllipse(_nodeColor, x, y, width, height);
 				GetDrawingLocationAndSize(node, graafix, node.Description(vertices), font, out x, out y, out width, out height);
 				graafix.DrawString(node.Description(vertices), font, _letterColor, x, y);
 			}
@@ -153,7 +153,7 @@ namespace Coordinates2Image
 				x2 += (int)(width2 / 2);
 				y2 += (int)(height2 / 2);
 				
-				graafix.DrawLine(new Pen(_linesColor, vertice.ThickNess * _lineThickness), x1, y1, x2, y2);
+				graafix.DrawLine(new Pen(_verticeColor, vertice.ThickNess * _verticeThickness), x1, y1, x2, y2);
 			}
 		}
 		
