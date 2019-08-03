@@ -57,7 +57,7 @@ namespace GeneralUtils
 			return line;
 		}
 		
-	
+		
 		public static string RemoveAtStart(string line, string away)
 		{
 			if (line.StartsWith(away))
@@ -85,24 +85,24 @@ namespace GeneralUtils
 			}
 		}
 		
-				
+		
 		public static List<string> SplitOnlyOutsideBrackets(string line, string splitCharacter, string characterNotOccuringInLine)
 		{
-			string lineWithoutSplitCharactersBetweenBrackets = ReplaceBetweenBrackets(line, splitCharacter, characterNotOccuringInLine);			
+			string lineWithoutSplitCharactersBetweenBrackets = ReplaceBetweenBrackets(line, splitCharacter, characterNotOccuringInLine);
 			List<string> lines = lineWithoutSplitCharactersBetweenBrackets.Split(splitCharacter.ToCharArray()).ToList();
-		
+			
 			for(int counter=0; counter<lines.Count;counter++)
 			{
 				lines[counter] = lines[counter].Replace(characterNotOccuringInLine, splitCharacter);
 			}
-			return lines;			
+			return lines;
 		}
 
 		
 		public static string ReplaceBetweenBrackets(string line, string target, string substitute)
 		{
 			StringBuilder builder = new StringBuilder();
-		
+			
 			for (int counter = 0; counter < line.Length; counter++)
 			{
 				char currentChar = line[counter];
@@ -118,9 +118,9 @@ namespace GeneralUtils
 					else
 					{
 						builder.Append(target);
-					}	
+					}
 				}
-				else 
+				else
 				{
 					builder.Append(currentChar);
 				}
@@ -162,13 +162,13 @@ namespace GeneralUtils
 		
 		public static List<string> FindAllStartings(string line)
 		{
-			List<string> subStrings = new List<string>(); 
+			List<string> subStrings = new List<string>();
 			
 			for(int counter=1;counter<line.Length;counter++)
-			{	
+			{
 				string subLine = line.Substring(0, counter);
 				subStrings.Add(subLine);
-			}			
+			}
 			return subStrings;
 		}
 		
@@ -176,20 +176,20 @@ namespace GeneralUtils
 		
 		public static List<string> FindAllEndings(string line)
 		{
-			List<string> subStrings = new List<string>(); 
+			List<string> subStrings = new List<string>();
 			
 			for(int counter=1;counter<line.Length;counter++)
 			{
 				int start = line.Length - counter;
 				string subLine = line.Substring(start);
 				subStrings.Add(subLine);
-			}			
+			}
 			return subStrings;
 		}
 		
 		
 		public static string FindPattern(string line, List<string> patterns, SearchDirection searchdirection)
-		{	
+		{
 			List<String> contents;
 			
 			if (searchdirection == SearchDirection.Forward)
@@ -201,7 +201,7 @@ namespace GeneralUtils
 				contents = FindAllEndings(line);
 			}
 			
-			patterns = patterns.OrderByDescending(p => p.Length).ToList();	
+			patterns = patterns.OrderByDescending(p => p.Length).ToList();
 			foreach(string content in contents)
 			{
 				foreach(string pattern in patterns)
@@ -210,10 +210,42 @@ namespace GeneralUtils
 					{
 						return pattern;
 					}
-				}	
+				}
 			}
-			return null;		
+			return null;
 		}
+		
+		
+		public static List<int> FindLastNumberGroup(string line)
+		{
+			List<string> subLines = line.Split("-".ToCharArray()).ToList();
+			for (int counter=subLines.Count-1; counter >= 0; counter--)
+			{
+				string subLine = subLines[counter];
+				if ((!String.IsNullOrEmpty(subLine)) && (subLine.Length > 0) && (Char.IsDigit(subLine[0])))
+				{
+					List<int> numbers = NumberCommaLine2Numbers(subLine);
+					return numbers;
+				}
+			}
+			return new List<int>();
+		}
+		
+		
+		public static string RemoveAllLetters(string line)
+		{
+			List<Char> noLetters = line.Where(c => !Char.IsLetter(c)).ToList();
+			string rv = string.Concat(noLetters);
+			return rv;
+		}
+		
+		public static List<int> NumberCommaLine2Numbers(string line)
+		{
+			List<string> elements = line.Split(",".ToCharArray()).ToList();
+			List<int> numbers = elements.Select(e => int.Parse(e)).ToList();
+			return numbers;		
+		}
+		
 		
 		
 		

@@ -35,14 +35,6 @@ namespace UnitTests
 			Assert.AreEqual(3, lines.Count, string.Empty);
 		}
 		
-		[Test]
-		public void RemovePrefixTest()
-		{
-			string line = "trimethyl";
-			string lineWithoutPrefix = Prefix.RemovePrefix(line);
-			StringAssert.AreEqualIgnoringCase("methyl", lineWithoutPrefix);
-		}
-		
 		
 		[Test]
 		public void RemoveAtEndTest()
@@ -77,6 +69,25 @@ namespace UnitTests
 			string line = "1-methylpentyl";
 			string subgroup = UtilStrings.FindPattern(line, subGroups, UtilStrings.SearchDirection.Backward);
 			StringAssert.AreEqualIgnoringCase("pentyl", subgroup);
+		}
+		
+		[Test]
+		public void FindLastNumberGroupTest()
+		{
+			string compoundName = "2-methyl-3,5,7-nonatriyne";
+		    List<int> numbers =	UtilStrings.FindLastNumberGroup(compoundName);
+		    Assert.AreEqual(3, numbers[0]);
+		    Assert.AreEqual(5, numbers[1]);
+		    Assert.AreEqual(7, numbers[2]);			
+		}
+		
+		[Test]
+		public void RemoveAllLettersTest()
+		{
+			string line = "2-methyl-3,5,7-nonatriyne";
+			string noLetters = UtilStrings.RemoveAllLetters(line);
+			Assert.AreEqual("2--3,5,7-", noLetters);
+			
 		}
 		
 		
