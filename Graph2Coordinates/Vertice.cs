@@ -25,14 +25,14 @@ namespace Graph2Coordinates
             ThickNess = thickNess;
         }
         
-        public Vertice(string line, List<Node> nodes, int thickNess)
+        public Vertice(string line, List<Node> nodes)
         {
         	string[] elements = line.Split(",".ToCharArray());
         	int nodeNumber1 = Convert.ToInt16(elements[0]);
         	int nodeNumber2 = Convert.ToInt16(elements[1]);
         	Node1 = nodes.Find(node => node.IdNumber == nodeNumber1);
         	Node2 = nodes.Find(node => node.IdNumber == nodeNumber2);	
-        	ThickNess = thickNess;
+        	ThickNess = Convert.ToInt16(elements[2]);
         }
         
               
@@ -45,7 +45,7 @@ namespace Graph2Coordinates
 		{
 			foreach(string line in lines)
 			{
-				Vertice vertice = new Vertice(line, nodes, 1);
+				Vertice vertice = new Vertice(line, nodes);
 				vertices.Add(vertice);
 			}
 		}

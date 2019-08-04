@@ -23,6 +23,7 @@ namespace IUPAC2Formula
 		public Enums.ChainTypes ChainType {get; private set;}
 		public int LocationOnParent{get; private set;}
 		public int Length{get; private set;}
+		public List<int> TripleBondLocations {get; private set; }
 		public List<Formula> SubFormulas{get; private set;}
 		
 		
@@ -31,7 +32,13 @@ namespace IUPAC2Formula
 			ChainType = chaintype;
 			LocationOnParent = locationOnParent;
 			Length = length;
-			SubFormulas = GetSubFormulas(remaining);
+			
+			//TODO CHANGE
+			TripleBondLocations = new List<int>();
+			TripleBondLocations.Add(4);
+			TripleBondLocations.Add(7);
+			
+			SubFormulas = GetSubFormulas(remaining);			
 		}
 		
 		
@@ -40,6 +47,10 @@ namespace IUPAC2Formula
 			ChainType = Enums.ChainTypes.Straight;
 			LocationOnParent = location;
 			Length =  CarbonChain.FindSubChainLength(subchainname);
+			
+			//TODO CHANGe
+			TripleBondLocations = new List<int>();
+			
 			SubFormulas = new List<Formula>();
 		}
 		
@@ -93,6 +104,15 @@ namespace IUPAC2Formula
 			builder.Append(LocationOnParent);
 			builder.Append(",");
 			builder.Append(Length);
+			builder.Append(",");
+			if (TripleBondLocations.Count > 0)
+			{
+				builder.Append(string.Join(";", TripleBondLocations));
+			}
+			else 
+			{
+				builder.Append(";");
+			}
 			builder.Append(",");
 			builder.Append("(");
 			builder.Append(string.Join("-", SubFormulas));

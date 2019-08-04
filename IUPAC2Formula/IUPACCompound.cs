@@ -49,7 +49,7 @@ namespace IUPAC2Formula
 				remaining = UtilStrings.RemoveEverythingAfter(iupacName, Constants.SubChainEnd);
 			}
 			
-			Formula = new Formula(chaintype, 0, mainChainLength, remaining);
+			Formula = new Formula(chaintype, 0, mainChainLength, remaining);			
 		}
 		
 		

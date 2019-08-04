@@ -45,7 +45,7 @@ namespace Formula2Graph
 				parentNode = null;
 			}
 			else
-			{	
+			{
 				startNumber = GetTotalNodes(ParentChain);
 				parentNode =  parentChain.Nodes[position-1];
 			}
@@ -61,6 +61,16 @@ namespace Formula2Graph
 				Vertices = MakeCircularVertices(Nodes);
 			}
 			
+			//apply triplebond-locations
+			string tripleBondLocationsLine = elements[3];
+			List<int> tripleBondLocations = LocationsLine2Locations(tripleBondLocationsLine);
+			for (int counter=0;counter<tripleBondLocations.Count;counter++)
+			{
+				int indexNumber = tripleBondLocations[counter];
+				Vertices[indexNumber].ThickNess = 3;
+			}
+			
+			
 			string remainder = GetRemainder(line);
 			if (String.IsNullOrEmpty(remainder))
 			{
@@ -75,6 +85,25 @@ namespace Formula2Graph
 					Nodes.AddRange(subchain.Nodes);
 					Vertices.AddRange(subchain.Vertices);
 				}
+			}
+		}
+		
+		private List<int> LocationsLine2Locations(string line)
+		{
+			if (line.Length > 1)
+			{
+				List<int> locations = new List<int>();
+				List<string> elements = line.Split(";".ToCharArray()).ToList();
+				foreach(string element in elements)
+				{
+					int location = Convert.ToInt16(element);
+					locations.Add(location);
+				}
+				return locations;
+			}
+			else
+			{
+				return new List<int>();
 			}
 		}
 		

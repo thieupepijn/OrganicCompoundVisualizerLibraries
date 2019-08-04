@@ -17,16 +17,17 @@ namespace Formula2Graph
 	{
 		public Node Node1 {get; private set;}
 		public Node Node2 {get; private set;}
-		
+		public int ThickNess {get; set;}
 		public Vertice(Node node1, Node node2)
 		{
 			Node1 = node1;
 			Node2 = node2;
+			ThickNess = 1;
 		}
 		
 		public override string ToString()
 		{
-			return string.Format("{0},{1}", Node1.Number, Node2.Number);
+			return string.Format("{0},{1},{2}", Node1.Number, Node2.Number, ThickNess);
 		}
 	}
 }
