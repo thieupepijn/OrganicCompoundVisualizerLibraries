@@ -49,7 +49,8 @@ namespace IUPAC2Formula
 				remaining = UtilStrings.RemoveEverythingAfter(iupacName, Constants.SubChainEnd);
 			}
 			
-			Formula = new Formula(chaintype, 0, mainChainLength, remaining);			
+			List<int> tripleBondLocations = GetTripleBondLocations(iupacName);
+			Formula = new Formula(chaintype, 0, mainChainLength, tripleBondLocations, remaining);			
 		}
 		
 		
@@ -58,7 +59,8 @@ namespace IUPAC2Formula
 			string chainDescription = FindSubChainPart(name);
 			int chainLength = CarbonChain.FindSubChainLength(chainDescription);
 			string remaining = UtilStrings.RemoveAtEnd(name, chainDescription);
-			Formula = new Formula(Enums.ChainTypes.Straight, locationOnParent, chainLength, remaining);
+			List<int> tripleBondLocations = GetTripleBondLocations(name);
+			Formula = new Formula(Enums.ChainTypes.Straight, locationOnParent, chainLength, tripleBondLocations, remaining);
 		}
 		
 		
@@ -107,7 +109,17 @@ namespace IUPAC2Formula
 		}
 		
 		
-		
+		private List<int> GetTripleBondLocations(string line)
+		{
+			if (line.EndsWith("yne"))
+			{
+				return UtilStrings.FindLastNumberGroup(line);
+			}
+			else 
+			{
+				return new List<int>();
+			}
+		}
 		
 		
 	}
