@@ -118,7 +118,7 @@ namespace IUPAC2Formula
 				doubleBondLocations = UtilStrings.FindSecondLastNumberGroup(line);
 				tripleBondLocations = UtilStrings.FindLastNumberGroup(line);
 			}
-			else if (line.Contains("en-"))
+			else if (line.EndsWith("ene"))
 			{
 				doubleBondLocations = UtilStrings.FindLastNumberGroup(line);
 				tripleBondLocations = new List<int>();

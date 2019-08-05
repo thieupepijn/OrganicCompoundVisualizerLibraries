@@ -98,9 +98,10 @@ namespace Formula2Graph
 			}
 		}
 		
+		//TODO THIS COULD BE IMPLEMENTED MORE ELEGANT
 		private List<int> LocationsLine2Locations(string line)
 		{
-			if (line.Length > 1)
+			if (line[0] != ';')
 			{
 				List<int> locations = new List<int>();
 				List<string> elements = line.Split(";".ToCharArray()).ToList();
