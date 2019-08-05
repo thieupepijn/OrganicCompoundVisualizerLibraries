@@ -61,8 +61,18 @@ namespace Formula2Graph
 				Vertices = MakeCircularVertices(Nodes);
 			}
 			
+			//TODO MAKE A FUNCTION OF THIS
 			//apply triplebond-locations
-			string tripleBondLocationsLine = elements[3];
+			string doubleBondLocationsLine = elements[3];
+			List<int> doubleBondlocations = LocationsLine2Locations(doubleBondLocationsLine);
+			for (int counter=0;counter<doubleBondlocations.Count;counter++)
+			{
+				int indexNumber = doubleBondlocations[counter];
+				Vertices[indexNumber].ThickNess = 2;
+			}
+			
+			//apply triplebond-locations
+			string tripleBondLocationsLine = elements[4];
 			List<int> tripleBondLocations = LocationsLine2Locations(tripleBondLocationsLine);
 			for (int counter=0;counter<tripleBondLocations.Count;counter++)
 			{

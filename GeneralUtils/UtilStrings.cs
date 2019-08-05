@@ -231,6 +231,28 @@ namespace GeneralUtils
 			return new List<int>();
 		}
 		
+		public static List<int> FindSecondLastNumberGroup(string line)
+		{
+			List<string> subLines = line.Split("-".ToCharArray()).ToList();
+			bool already = false;
+			for (int counter=subLines.Count-1; counter >= 0; counter--)
+			{
+				string subLine = subLines[counter];
+				if ((!String.IsNullOrEmpty(subLine)) && (subLine.Length > 0) && (Char.IsDigit(subLine[0])))
+				{
+					if (already)
+					{
+						List<int> numbers = NumberCommaLine2Numbers(subLine);
+						return numbers;
+					}
+					else
+					{
+						already = true;
+					}
+				}
+			}
+			return new List<int>();
+		}
 		
 		public static string RemoveAllLetters(string line)
 		{
@@ -243,7 +265,7 @@ namespace GeneralUtils
 		{
 			List<string> elements = line.Split(",".ToCharArray()).ToList();
 			List<int> numbers = elements.Select(e => int.Parse(e)).ToList();
-			return numbers;		
+			return numbers;
 		}
 		
 		

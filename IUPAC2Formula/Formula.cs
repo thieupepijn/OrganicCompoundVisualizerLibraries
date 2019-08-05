@@ -23,15 +23,17 @@ namespace IUPAC2Formula
 		public Enums.ChainTypes ChainType {get; private set;}
 		public int LocationOnParent{get; private set;}
 		public int Length{get; private set;}
+		public List<int> DoubleBondLocations {get; private set; }
 		public List<int> TripleBondLocations {get; private set; }
 		public List<Formula> SubFormulas{get; private set;}
 		
 		
-		public Formula(Enums.ChainTypes chaintype, int locationOnParent, int length, List<int> tripleBondLocations, string remaining)
+		public Formula(Enums.ChainTypes chaintype, int locationOnParent, int length, List<int> doubleBondLocations, List<int> tripleBondLocations, string remaining)
 		{
 			ChainType = chaintype;
 			LocationOnParent = locationOnParent;
 			Length = length;			
+			DoubleBondLocations = doubleBondLocations;
 			TripleBondLocations = tripleBondLocations;				
 			SubFormulas = GetSubFormulas(remaining);			
 		}
@@ -43,7 +45,8 @@ namespace IUPAC2Formula
 			LocationOnParent = location;
 			Length =  CarbonChain.FindSubChainLength(subchainname);
 			
-			//no triplebondlocations in subchains
+			//no double and triplebondlocations in subchains
+			DoubleBondLocations = new List<int>();
 			TripleBondLocations = new List<int>();
 			
 			SubFormulas = new List<Formula>();
@@ -98,6 +101,18 @@ namespace IUPAC2Formula
 			builder.Append(",");
 			builder.Append(Length);
 			builder.Append(",");
+			
+			//TODO MAKE A FUNCTIOn OF THIS
+			if (DoubleBondLocations.Count > 0)
+			{
+				builder.Append(string.Join(";", DoubleBondLocations));
+			}
+			else 
+			{
+				builder.Append(";");
+			}
+			builder.Append(",");
+			
 			if (TripleBondLocations.Count > 0)
 			{
 				builder.Append(string.Join(";", TripleBondLocations));

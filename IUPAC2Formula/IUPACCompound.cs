@@ -49,8 +49,9 @@ namespace IUPAC2Formula
 				remaining = UtilStrings.RemoveEverythingAfter(iupacName, Constants.SubChainEnd);
 			}
 			
-			List<int> tripleBondLocations = GetTripleBondLocations(iupacName);
-			Formula = new Formula(chaintype, 0, mainChainLength, tripleBondLocations, remaining);			
+			List<int> doubleBondLocations, tripleBondLocations;
+			GetDoubleAndTripleBondLocations(iupacName, out doubleBondLocations, out tripleBondLocations);
+			Formula = new Formula(chaintype, 0, mainChainLength, doubleBondLocations, tripleBondLocations, remaining);
 		}
 		
 		
@@ -59,8 +60,9 @@ namespace IUPAC2Formula
 			string chainDescription = FindSubChainPart(name);
 			int chainLength = CarbonChain.FindSubChainLength(chainDescription);
 			string remaining = UtilStrings.RemoveAtEnd(name, chainDescription);
-			List<int> tripleBondLocations = GetTripleBondLocations(name);
-			Formula = new Formula(Enums.ChainTypes.Straight, locationOnParent, chainLength, tripleBondLocations, remaining);
+			List<int> doubleBondLocations, tripleBondLocations;
+			GetDoubleAndTripleBondLocations(name, out doubleBondLocations, out tripleBondLocations);
+			Formula = new Formula(Enums.ChainTypes.Straight, locationOnParent, chainLength, doubleBondLocations, tripleBondLocations, remaining);
 		}
 		
 		
@@ -89,7 +91,7 @@ namespace IUPAC2Formula
 				{
 					if(line.Contains(Constants.EndBracket))
 					{
-						return UtilStrings.RemoveEverythingBefore(line, Constants.EndBracket);						
+						return UtilStrings.RemoveEverythingBefore(line, Constants.EndBracket);
 					}
 					else
 					{
@@ -102,25 +104,37 @@ namespace IUPAC2Formula
 		
 		
 		private string FindSubChainPart(string line)
-		{			
+		{
 			List<string> subGroupNames = CarbonChain.GetAllSubChainNames();
 			string subGroupName = UtilStrings.FindPattern(line, subGroupNames, UtilStrings.SearchDirection.Backward);
 			return subGroupName;
 		}
 		
-		
-		private List<int> GetTripleBondLocations(string line)
-		{
-			if (line.EndsWith("yne"))
+			
+		private void GetDoubleAndTripleBondLocations(string line, out List<int> doubleBondLocations, out List<int> tripleBondLocations)
+		{			
+			if ((line.EndsWith("yne")) && (line.Contains("en-")))
 			{
-				return UtilStrings.FindLastNumberGroup(line);
+				doubleBondLocations = UtilStrings.FindSecondLastNumberGroup(line);
+				tripleBondLocations = UtilStrings.FindLastNumberGroup(line);
+			}
+			else if (line.Contains("en-"))
+			{
+				doubleBondLocations = UtilStrings.FindLastNumberGroup(line);
+				tripleBondLocations = new List<int>();
+			}
+			else if(line.EndsWith("yne"))
+			{
+				doubleBondLocations = new List<int>();
+				tripleBondLocations = UtilStrings.FindLastNumberGroup(line);
 			}
 			else 
 			{
-				return new List<int>();
-			}
+				doubleBondLocations = new List<int>();
+				tripleBondLocations = new List<int>();
+			}					
 		}
 		
-		
+				
 	}
 }

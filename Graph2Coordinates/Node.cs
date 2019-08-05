@@ -96,6 +96,7 @@ namespace Graph2Coordinates
 		#endregion connected functions
 		
 		#region description and tostring
+		//TODO number of hydrogens in seperate function, take into account thickness of vertices
 		public string Description(List<Vertice> vertices)
 		{
 			List<Node> connectedNodes = ConnectedNodes(vertices);
