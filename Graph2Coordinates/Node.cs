@@ -69,13 +69,9 @@ namespace Graph2Coordinates
 			List<Node> nodes = new List<Node>();
 			foreach(Vertice vertice in vertices)
 			{
-				if (this == vertice.Node1)
+				if ((this == vertice.Node1) || (this == vertice.Node2))
 				{
 					nodes.Add(vertice.Node2);
-				}
-				else if (this == vertice.Node2)
-				{
-					nodes.Add(vertice.Node1);
 				}
 			}
 			return nodes;
@@ -93,15 +89,26 @@ namespace Graph2Coordinates
 				return false;
 			}
 		}
+		
+		public int NumberOfConnectectedHydrogns(List<Vertice> vertices)
+		{
+			int numberOfConnectedHydrogens = 4;
+			foreach(Vertice vertice in vertices)
+			{
+				if ((this == vertice.Node1) || (this == vertice.Node2))
+				{
+					numberOfConnectedHydrogens -= vertice.ThickNess;
+				}				
+			}
+			return numberOfConnectedHydrogens;
+		}
+		
 		#endregion connected functions
 		
 		#region description and tostring
-		//TODO number of hydrogens in seperate function, take into account thickness of vertices
 		public string Description(List<Vertice> vertices)
-		{
-			List<Node> connectedNodes = ConnectedNodes(vertices);
-			int numberOfHydrogens = 4 - connectedNodes.Count;
-			
+		{	
+			int numberOfHydrogens = NumberOfConnectectedHydrogns(vertices);		
 			if (numberOfHydrogens == 0)
 			{
 				return "C";

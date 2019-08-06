@@ -37,7 +37,7 @@
     <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
     <StartAction>Program</StartAction>
     <StartProgram>..\..\Excecutables\OrganicCompoundVisualizerConsole.exe</StartProgram>
-    <StartArguments>3-hexen-1-yne C:\Matthieu\ThieuProgs\yo.bmp</StartArguments>
+    <StartArguments>2-methylhex-1,4-diene C:\Matthieu\ThieuProgs\yo.bmp</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <OutputPath>bin\Release\</OutputPath>
