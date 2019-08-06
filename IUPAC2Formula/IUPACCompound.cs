@@ -110,9 +110,10 @@ namespace IUPAC2Formula
 			return subGroupName;
 		}
 		
-			
+		//TODO from each number 1 should be subtracted	
 		private void GetDoubleAndTripleBondLocations(string line, out List<int> doubleBondLocations, out List<int> tripleBondLocations)
-		{			
+		{		
+			
 			if ((line.EndsWith("yne")) && (line.Contains("en-")))
 			{
 				doubleBondLocations = UtilStrings.FindSecondLastNumberGroup(line);
@@ -132,7 +133,9 @@ namespace IUPAC2Formula
 			{
 				doubleBondLocations = new List<int>();
 				tripleBondLocations = new List<int>();
-			}					
+			}	
+			doubleBondLocations = doubleBondLocations.ConvertAll(l => l - 1);
+			tripleBondLocations = tripleBondLocations.ConvertAll(l => l - 1);
 		}
 		
 				

@@ -61,24 +61,14 @@ namespace Formula2Graph
 				Vertices = MakeCircularVertices(Nodes);
 			}
 			
-			//TODO MAKE A FUNCTION OF THIS
+			
 			//apply triplebond-locations
 			string doubleBondLocationsLine = elements[3];
-			List<int> doubleBondlocations = LocationsLine2Locations(doubleBondLocationsLine);
-			for (int counter=0;counter<doubleBondlocations.Count;counter++)
-			{
-				int indexNumber = doubleBondlocations[counter];
-				Vertices[indexNumber].ThickNess = 2;
-			}
+			ApplyMultipleBondLocations2Vertices(doubleBondLocationsLine, Vertices, 2);
 			
 			//apply triplebond-locations
 			string tripleBondLocationsLine = elements[4];
-			List<int> tripleBondLocations = LocationsLine2Locations(tripleBondLocationsLine);
-			for (int counter=0;counter<tripleBondLocations.Count;counter++)
-			{
-				int indexNumber = tripleBondLocations[counter];
-				Vertices[indexNumber].ThickNess = 3;
-			}
+			ApplyMultipleBondLocations2Vertices(tripleBondLocationsLine, Vertices, 3);
 			
 			
 			string remainder = GetRemainder(line);
@@ -96,6 +86,21 @@ namespace Formula2Graph
 					Vertices.AddRange(subchain.Vertices);
 				}
 			}
+		}
+		
+		private void ApplyMultipleBondLocations2Vertices(string locationsLine, List<Vertice> vertices, int thickness)
+		{
+			List<int> locations = LocationsLine2Locations(locationsLine);
+			ApplyMultipleBondLocations2Vertices(locations, vertices, thickness);
+		}
+		
+		
+		private void ApplyMultipleBondLocations2Vertices(List<int> locations, List<Vertice> vertices, int thickness)
+		{
+			foreach(int location in locations)
+			{	
+				Vertices[location].ThickNess = thickness;
+			}			
 		}
 		
 		//TODO THIS COULD BE IMPLEMENTED MORE ELEGANT

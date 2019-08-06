@@ -100,32 +100,27 @@ namespace IUPAC2Formula
 			builder.Append(LocationOnParent);
 			builder.Append(",");
 			builder.Append(Length);
+			builder.Append(",");			
+			builder.Append(Locations2String(DoubleBondLocations));
 			builder.Append(",");
-			
-			//TODO MAKE A FUNCTIOn OF THIS
-			if (DoubleBondLocations.Count > 0)
-			{
-				builder.Append(string.Join(";", DoubleBondLocations));
-			}
-			else 
-			{
-				builder.Append(";");
-			}
-			builder.Append(",");
-			
-			if (TripleBondLocations.Count > 0)
-			{
-				builder.Append(string.Join(";", TripleBondLocations));
-			}
-			else 
-			{
-				builder.Append(";");
-			}
+			builder.Append(Locations2String(TripleBondLocations));
 			builder.Append(",");
 			builder.Append("(");
 			builder.Append(string.Join("-", SubFormulas));
 			builder.Append(")");
 			return builder.ToString();
+		}
+		
+		private string Locations2String(List<int> locations)
+		{
+			if ((locations == null) || (locations.Count < 1))
+			{
+				return ";";
+			}
+			else 
+			{
+				return string.Join(";", locations);
+			}			
 		}
 		
 		
