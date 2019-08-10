@@ -18,7 +18,11 @@ namespace Coordinates2Image
 		
 		void DrawBackGround();
 		
-		void DrawString();
+		void DrawString(string line, int x, int y);
+					
+		void DrawCircle(int centerX, int centerY, int radius);
+		
+		void DrawLine(int x1, int y1, int x2, int y2);
 		
 		
 	}
