@@ -24,14 +24,15 @@ namespace IUPAC2Image
 	public class IUPAC2ImageConverter
 	{
 		
-		Drawer _drawer;
+		SimpleDrawer _simpleDrawer = null;
+		AdvancedDrawer _advancedDrawer = null;
 		
 		public IUPAC2ImageConverter(string iupacName, int imageWidth, int imageHeight, int fontSize, int verticeLength, int verticeThickness)
 		{	
 			List<Graph2Coordinates.Node> nodes;
 			List<Graph2Coordinates.Vertice> vertices;		
 			GetNodesAndVertices(iupacName, imageWidth, imageHeight, verticeLength, out nodes, out vertices);	
-			_drawer = new Drawer(nodes, vertices, imageWidth, imageHeight, fontSize, verticeThickness); 
+			_simpleDrawer = new SimpleDrawer(nodes, vertices, imageWidth, imageHeight, fontSize, verticeThickness); 
 		}
 		
 		
@@ -41,8 +42,19 @@ namespace IUPAC2Image
 			List<Graph2Coordinates.Vertice> vertices;
 			
 			GetNodesAndVertices(iupacName, imageWidth, imageHeight, verticeLength, out nodes, out vertices);			
-			_drawer = new Drawer(nodes, vertices, imageWidth, imageHeight, fontSize, verticeThickness, backGroundColor, letterColor, ballsColor, linesColor);	
+			_simpleDrawer = new SimpleDrawer(nodes, vertices, imageWidth, imageHeight, fontSize, verticeThickness, backGroundColor, letterColor, ballsColor, linesColor);	
 		}
+		
+	
+		public IUPAC2ImageConverter(string iupacName, int imageWidth, int imageHeight, int verticeLength, IPainter painter)
+		{
+			List<Graph2Coordinates.Node> nodes;
+			List<Graph2Coordinates.Vertice> vertices;
+			
+			GetNodesAndVertices(iupacName, imageWidth, imageHeight, verticeLength, out nodes, out vertices);
+			_advancedDrawer = new AdvancedDrawer(nodes, vertices, painter);
+		}
+		
 		
 		private void GetNodesAndVertices(string iupacName, int imageWidth, int imageHeight, int verticeLength, out List<Graph2Coordinates.Node> nodes, out List<Graph2Coordinates.Vertice> vertices)
 		{
@@ -68,18 +80,23 @@ namespace IUPAC2Image
 		
 		public Bitmap DrawToBitmap()
 		{
-			return _drawer.Draw2Bitmap();	
+			return _simpleDrawer.Draw2Bitmap();	
 		}
 		
 		public BitmapImage DrawToBitmapImage()
 		{
-			return _drawer.Draw2BitmapImage();
+			return _simpleDrawer.Draw2BitmapImage();
 		}
 		
 		
 		public void DrawToFile(string filepath)
 		{
-			_drawer.Draw2File(filepath);
+			_simpleDrawer.Draw2File(filepath);
+		}
+		
+		public void DrawOnCanvas()
+		{
+			_advancedDrawer.Draw();
 		}
 		
 		

@@ -50,7 +50,7 @@ namespace IUPAC2Formula
 				return line;
 			}
 		}
-		
+		//TODO THIS SHOULD BE IMPLEMENED FURTHER
 		private string GetPrefixWord(int number)
 		{
 			if (number == 2)

@@ -103,7 +103,6 @@ namespace Formula2Graph
 			}			
 		}
 		
-		//TODO THIS COULD BE IMPLEMENTED MORE ELEGANT
 		private List<int> LocationsLine2Locations(string line)
 		{
 			if (line[0] != ';')

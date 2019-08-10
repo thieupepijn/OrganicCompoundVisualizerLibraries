@@ -110,7 +110,6 @@ namespace IUPAC2Formula
 			return subGroupName;
 		}
 		
-		//TODO from each number 1 should be subtracted	
 		private void GetDoubleAndTripleBondLocations(string line, out List<int> doubleBondLocations, out List<int> tripleBondLocations)
 		{		
 			

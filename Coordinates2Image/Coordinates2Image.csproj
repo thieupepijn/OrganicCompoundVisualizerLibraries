@@ -69,7 +69,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Drawer.cs" />
+    <Compile Include="AdvancedDrawer.cs" />
+    <Compile Include="IPainter.cs" />
+    <Compile Include="SimpleDrawer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

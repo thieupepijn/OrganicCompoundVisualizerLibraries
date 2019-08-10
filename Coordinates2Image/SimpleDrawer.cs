@@ -18,7 +18,7 @@ using Graph2Coordinates;
 namespace Coordinates2Image
 {
 	
-	public class Drawer
+	public class SimpleDrawer
 	{
 		
 		private const string MEASURINGSTRING = "CCCC";
@@ -35,7 +35,7 @@ namespace Coordinates2Image
 		private Brush _verticeColor;
 		
 		
-		public Drawer(List<Node> nodes, List<Vertice> vertices, int imageWidth, int imageHeight, int fontSize, int verticeThicknes, Color backGroundColor, Brush letterColor, Brush nodeColor, Brush verticeColor)
+		public SimpleDrawer(List<Node> nodes, List<Vertice> vertices, int imageWidth, int imageHeight, int fontSize, int verticeThicknes, Color backGroundColor, Brush letterColor, Brush nodeColor, Brush verticeColor)
 		{
 			_nodes = nodes;
 			_vertices = vertices;
@@ -52,7 +52,7 @@ namespace Coordinates2Image
 		}
 		
 		
-		public Drawer(List<Node> nodes, List<Vertice> vertices, int imageWidth, int imageHeight, int fontsize, int verticeThicknes)
+		public SimpleDrawer(List<Node> nodes, List<Vertice> vertices, int imageWidth, int imageHeight, int fontsize, int verticeThicknes)
 		{
 			_nodes = nodes;
 			_vertices = vertices;

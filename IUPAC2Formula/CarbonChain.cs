@@ -64,7 +64,7 @@ namespace IUPAC2Formula
 			return 0;
 		}
 		
-		
+		//TODO THIS SHOULD BE IMPLEMENTED FURTHER
 		private string GetName(int length)
 		{
 			if (length == 1)
