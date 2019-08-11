@@ -34,12 +34,13 @@ namespace Coordinates2Image
 			
 			foreach(Vertice vertice in _vertices)
 			{
-				_painter.DrawLine(vertice.Node1.Location.X, vertice.Node1.Location.Y, vertice.Node2.Location.X, vertice.Node2.Location.Y, vertice.ThickNess);
+				_painter.DrawLine(vertice.Node1.Location.X, vertice.Node1.Location.Y, vertice.Node2.Location.X, vertice.Node2.Location.Y,  _painter.LineThickness * vertice.ThickNess);
 			}
 			
+			int nodeRadius = _painter.GetPixelWidthOfString("CCCC");
 			foreach(Node node in _nodes)
 			{		
-				_painter.DrawCircle(node.Location.X, node.Location.Y, 50);
+				_painter.DrawCircle(node.Location.X, node.Location.Y, nodeRadius);
 				_painter.DrawString(node.Description(_vertices), node.Location.X, node.Location.Y);
 			}	
 		}

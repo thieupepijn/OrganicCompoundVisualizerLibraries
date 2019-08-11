@@ -15,14 +15,17 @@ namespace Coordinates2Image
 	/// </summary>
 	public interface IPainter
 	{
+		int LineThickness {get;set;}
 		
 		void DrawBackGround();
 		
-		void DrawString(string line, int x, int y);
+		void DrawString(string line, int centerx, int centerY);
 					
 		void DrawCircle(int centerX, int centerY, int radius);
 		
 		void DrawLine(int x1, int y1, int x2, int y2, int thickness);
+		
+		int GetPixelWidthOfString(string line);
 		
 		
 	}
