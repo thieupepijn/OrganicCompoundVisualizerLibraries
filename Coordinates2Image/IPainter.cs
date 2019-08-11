@@ -22,7 +22,7 @@ namespace Coordinates2Image
 					
 		void DrawCircle(int centerX, int centerY, int radius);
 		
-		void DrawLine(int x1, int y1, int x2, int y2);
+		void DrawLine(int x1, int y1, int x2, int y2, int thickness);
 		
 		
 	}

@@ -34,7 +34,7 @@ namespace Coordinates2Image
 			
 			foreach(Vertice vertice in _vertices)
 			{
-				_painter.DrawLine(vertice.Node1.Location.X, vertice.Node1.Location.Y, vertice.Node2.Location.X, vertice.Node2.Location.Y);
+				_painter.DrawLine(vertice.Node1.Location.X, vertice.Node1.Location.Y, vertice.Node2.Location.X, vertice.Node2.Location.Y, vertice.ThickNess);
 			}
 			
 			foreach(Node node in _nodes)
