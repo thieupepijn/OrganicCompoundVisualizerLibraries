@@ -39,7 +39,7 @@ namespace IUPAC2Formula
 			{
 				
 				List<string> locations = locationsline.Split(",".ToCharArray()).ToList();
-				string chainName = Prefix.RemovePrefix(nameline);
+				string chainName = MultiplyingAffix.RemoveMultiplyingAffix(nameline);
 				int chainLength = CarbonChain.FindSubChainLength(chainName);
 				
 				Formulas = new List<Formula>();

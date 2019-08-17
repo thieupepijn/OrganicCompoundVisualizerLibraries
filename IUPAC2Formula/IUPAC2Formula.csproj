@@ -37,7 +37,7 @@
     <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
     <StartAction>Program</StartAction>
     <StartProgram>..\..\Excecutables\OrganicCompoundVisualizerConsole.exe</StartProgram>
-    <StartArguments>2-methylhex-1,4-diene C:\Matthieu\ThieuProgs\yo.bmp</StartArguments>
+    <StartArguments>2,5-dipropylnonane C:\Matthieu\ThieuProgs\yo.bmp</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -67,7 +67,7 @@
     <Compile Include="Formula.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="IUPACCompound.cs" />
-    <Compile Include="Prefix.cs" />
+    <Compile Include="MultiplyingAffix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

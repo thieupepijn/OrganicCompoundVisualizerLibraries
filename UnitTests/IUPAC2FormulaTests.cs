@@ -20,7 +20,7 @@ namespace UnitTests
 		public void RemovePrefixTest()
 		{
 			string line = "trimethyl";
-			string lineWithoutPrefix = Prefix.RemovePrefix(line);
+			string lineWithoutPrefix = MultiplyingAffix.RemoveMultiplyingAffix(line);
 			StringAssert.AreEqualIgnoringCase("methyl", lineWithoutPrefix);
 		}
 		
