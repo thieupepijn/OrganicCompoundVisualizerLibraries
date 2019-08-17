@@ -15,21 +15,19 @@ namespace IUPAC2Formula
 
 	public class CarbonSubChain
 	{
-		public int Length {get; set;}
-		public string Name {get; set;}
-		//public string Prefix {get; set;}
-		
+		public int Length {get; private set;}
+		public string Name {get; private set;}
+			
 		public CarbonSubChain(int length)
 		{
 			Length = length;
 			Name = GetName(Length);
-			//Prefix = Name.Replace("yl", String.Empty);
 		}
 		
 		public static List<String> GetAllNames()
 		{
 			List<string> names = new List<string>();
-			for (int counter = 1; counter < 11; counter++)
+			for (int counter = 1; counter < Constants.MaxChainlength; counter++)
 			{
 				string name = new CarbonSubChain(counter).Name;
 				names.Add(name);
@@ -50,8 +48,7 @@ namespace IUPAC2Formula
 			}
 			return 0;
 		}
-		
-		
+				
 		//TODO THIS SHOULD BE IMPLEMENTED FURTHER
 		private string GetName(int length)
 		{

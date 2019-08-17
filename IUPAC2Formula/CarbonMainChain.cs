@@ -15,9 +15,9 @@ namespace IUPAC2Formula
 	
 	public class CarbonMainChain
 	{
-		public int Length {get; set;}
-		public string Name {get; set;}
-		public string Prefix{get; set;}
+		public int Length {get; private set;}
+		public string Name {get; private set;}
+		public string Prefix{get; private set;}
 		
 		public CarbonMainChain(int length)
 		{
@@ -29,7 +29,7 @@ namespace IUPAC2Formula
 		public static List<String> GetAllNames()
 		{
 			List<string> names = new List<string>();
-			for (int counter = 1; counter < 26; counter++)
+			for (int counter = 1; counter <= Constants.MaxChainlength; counter++)
 			{
 				string name = new CarbonSubChain(counter).Name;
 				names.Add(name);
@@ -39,8 +39,8 @@ namespace IUPAC2Formula
 		
 		
 		public static int FindMainChainLength(string line)
-		{
-			for (int counter=1;counter<26;counter++)
+		{	
+			for (int counter=1;counter <= Constants.MaxChainlength;counter++)
 			{
 				string countingWord =  new CarbonMainChain(counter).Prefix;
 				if (line.StartsWith(countingWord, StringComparison.OrdinalIgnoreCase))

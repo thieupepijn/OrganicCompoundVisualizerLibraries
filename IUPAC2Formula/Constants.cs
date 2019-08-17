@@ -22,6 +22,9 @@ namespace IUPAC2Formula
 		public const string GroupSeperatorSubstitute = "&";
 		public const string SubChainEnd = "yl";
 		
+		public const int MaxChainlength = 25;
+		public const int MaxNumberOfSubChains = 25;
+		
 		
 		
 	}

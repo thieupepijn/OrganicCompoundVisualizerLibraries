@@ -16,8 +16,8 @@ namespace IUPAC2Formula
 	
 	public class MultiplyingAffix
 	{
-		public int Number {get; set;}
-		public string Name {get; set;}
+		public int Number {get; private set;}
+		public string Name {get; private set;}
 		
 		public MultiplyingAffix(int number)
 		{
@@ -28,7 +28,7 @@ namespace IUPAC2Formula
 		public static List<string> GetAllNames()
 		{
 			List<string> names = new List<string>();
-			for (int counter = 1; counter < 26; counter++)
+			for (int counter = 1; counter <= Constants.MaxNumberOfSubChains; counter++)
 			{
 				string name = new MultiplyingAffix(counter).Name;
 				names.Add(name);
