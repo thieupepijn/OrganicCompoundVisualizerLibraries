@@ -7,6 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 using IUPAC2Formula;
 
@@ -17,10 +18,18 @@ namespace UnitTests
 	{
 		
 		[Test]
-		public void RemovePrefixTest()
+		public void GetAllNamesProperlySorted()
+		{
+			List<string> names = MultiplyingAffix.GetAllNames();
+			Assert.AreEqual(9, names[0].Length);
+			Assert.AreEqual(2, names[24].Length);
+		}
+		
+		[Test]
+		public void RemoveMultiplyingAffixTest()
 		{
 			string line = "trimethyl";
-			string lineWithoutPrefix = MultiplyingAffix.RemoveMultiplyingAffix(line);
+			string lineWithoutPrefix = MultiplyingAffix.RemoveMultiplyingAffixName(line);
 			StringAssert.AreEqualIgnoringCase("methyl", lineWithoutPrefix);
 		}
 		

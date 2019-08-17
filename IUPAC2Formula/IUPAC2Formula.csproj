@@ -61,7 +61,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CarbonChain.cs" />
+    <Compile Include="CarbonMainChain.cs" />
+    <Compile Include="CarbonSubChain.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Formula.cs" />

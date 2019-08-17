@@ -8,6 +8,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using GeneralUtils;
 
 namespace IUPAC2Formula
@@ -32,10 +33,10 @@ namespace IUPAC2Formula
 				string name = new MultiplyingAffix(counter).Name;
 				names.Add(name);
 			}
-			return names;
+			return names.OrderByDescending(n => n.Length).ToList();
 		}
 		
-		public static string RemoveMultiplyingAffix(string line)
+		public static string RemoveMultiplyingAffixName(string line)
 		{
 			List<string> prefixWords = GetAllNames();
 			string prefixword = UtilStrings.FindPattern(line, prefixWords, UtilStrings.SearchDirection.Forward);

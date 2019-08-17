@@ -65,7 +65,7 @@ namespace UnitTests
 		[Test]
 		public void FindSubGroupTest()
 		{
-			List<string> subGroups = CarbonChain.GetAllSubChainNames();
+			List<string> subGroups = CarbonSubChain.GetAllNames();
 			string line = "1-methylpentyl";
 			string subgroup = UtilStrings.FindPattern(line, subGroups, UtilStrings.SearchDirection.Backward);
 			StringAssert.AreEqualIgnoringCase("pentyl", subgroup);

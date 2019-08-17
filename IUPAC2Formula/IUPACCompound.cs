@@ -37,7 +37,7 @@ namespace IUPAC2Formula
 				chaintype = Enums.ChainTypes.Straight;
 			}
 			
-			int mainChainLength = CarbonChain.FindMainChainLength(mainChainDescription);
+			int mainChainLength = CarbonMainChain.FindMainChainLength(mainChainDescription);
 			
 			string remaining;
 			if (iupacName.Contains(Constants.EndBracket))
@@ -58,7 +58,7 @@ namespace IUPAC2Formula
 		public IUPACCompound(int locationOnParent, string name)
 		{
 			string chainDescription = FindSubChainPart(name);
-			int chainLength = CarbonChain.FindSubChainLength(chainDescription);
+			int chainLength = CarbonSubChain.FindSubChainLength(chainDescription);
 			string remaining = UtilStrings.RemoveAtEnd(name, chainDescription);
 			List<int> doubleBondLocations, tripleBondLocations;
 			GetDoubleAndTripleBondLocations(name, out doubleBondLocations, out tripleBondLocations);
@@ -105,7 +105,7 @@ namespace IUPAC2Formula
 		
 		private string FindSubChainPart(string line)
 		{
-			List<string> subGroupNames = CarbonChain.GetAllSubChainNames();
+			List<string> subGroupNames = CarbonSubChain.GetAllNames();
 			string subGroupName = UtilStrings.FindPattern(line, subGroupNames, UtilStrings.SearchDirection.Backward);
 			return subGroupName;
 		}

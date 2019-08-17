@@ -43,7 +43,7 @@ namespace IUPAC2Formula
 		{
 			ChainType = Enums.ChainTypes.Straight;
 			LocationOnParent = location;
-			Length =  CarbonChain.FindSubChainLength(subchainname);
+			Length =  CarbonSubChain.FindSubChainLength(subchainname);
 			
 			//no double and triplebondlocations in subchains
 			DoubleBondLocations = new List<int>();
