@@ -29,29 +29,40 @@ namespace IUPAC2Formula
 		public static List<String> GetAllNames()
 		{
 			List<string> names = new List<string>();
+			foreach(CarbonMainChain mainChain in GetAllMainChains())
+			{
+				names.Add(mainChain.Name);
+			}			
+			return names.OrderByDescending(n => n.Length).ToList();
+		}
+		
+		
+		public static List<CarbonMainChain> GetAllMainChains()
+		{			
+			List<CarbonMainChain> mainChains = new List<CarbonMainChain>();
 			for (int counter = 1; counter <= Constants.MaxChainlength; counter++)
 			{
-				string name = new CarbonSubChain(counter).Name;
-				names.Add(name);
+				CarbonMainChain mainChain = new CarbonMainChain(counter);
+				mainChains.Add(mainChain);
 			}
-			return names.OrderByDescending(n => n.Length).ToList();
+			return mainChains.OrderByDescending(c => c.Name.Length).ToList();
 		}
 		
 		
 		public static int FindMainChainLength(string line)
 		{	
-			for (int counter=1;counter <= Constants.MaxChainlength;counter++)
+			foreach(CarbonMainChain mainChain in GetAllMainChains())
 			{
-				string countingWord =  new CarbonMainChain(counter).Prefix;
-				if (line.StartsWith(countingWord, StringComparison.OrdinalIgnoreCase))
+				string countingWord =  mainChain.Prefix;
+				if ((!string.IsNullOrEmpty(countingWord)) && (line.StartsWith(countingWord, StringComparison.OrdinalIgnoreCase)))
 				{
-					return counter;
+					return mainChain.Length;
 				}
 			}
 			return 0;
 		}
 		
-		
+				
 		//TODO THIS SHOULD BE IMPLEMENTED FURTHER
 		private string GetName(int length)
 		{

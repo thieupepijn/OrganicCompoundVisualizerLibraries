@@ -17,7 +17,7 @@ namespace IUPAC2Formula
 	{
 		public int Length {get; private set;}
 		public string Name {get; private set;}
-			
+		
 		public CarbonSubChain(int length)
 		{
 			Length = length;
@@ -27,28 +27,38 @@ namespace IUPAC2Formula
 		public static List<String> GetAllNames()
 		{
 			List<string> names = new List<string>();
-			for (int counter = 1; counter < Constants.MaxChainlength; counter++)
+			foreach(CarbonSubChain subchain in GetAllSubChains())
 			{
-				string name = new CarbonSubChain(counter).Name;
-				names.Add(name);
+				names.Add(subchain.Name);
 			}
 			return names.OrderByDescending(n => n.Length).ToList();
+		}
+		
+		public static List<CarbonSubChain> GetAllSubChains()
+		{
+			List<CarbonSubChain> subChains = new List<CarbonSubChain>();
+			for (int counter = 1; counter <= Constants.MaxChainlength; counter++)
+			{
+				CarbonSubChain subChain = new CarbonSubChain(counter);
+				subChains.Add(subChain);
+			}
+			return subChains.OrderByDescending(c => c.Name.Length).ToList();
 		}
 		
 		
 		public static int FindSubChainLength(string line)
 		{
-			for (int counter=1;counter<11;counter++)
+			foreach(CarbonSubChain subChain in GetAllSubChains())
 			{
-				string subchainName = new CarbonSubChain(counter).Name;
+				string subchainName = subChain.Name;
 				if (line.EndsWith(subchainName, StringComparison.OrdinalIgnoreCase))
 				{
-					return counter;
+					return subChain.Length;
 				}
 			}
 			return 0;
 		}
-				
+		
 		//TODO THIS SHOULD BE IMPLEMENTED FURTHER
 		private string GetName(int length)
 		{
@@ -68,6 +78,6 @@ namespace IUPAC2Formula
 			}
 		}
 		
-					
+		
 	}
 }
