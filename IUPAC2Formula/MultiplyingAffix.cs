@@ -63,6 +63,8 @@ namespace IUPAC2Formula
 		}
 		
 		//information taken from https://en.wikipedia.org/wiki/IUPAC_numerical_multiplier
+		//and: Systematic Nomenclature of Organic Chemistry
+		//by D. Hellwinkel
 		private string GetAffixName(int number)
 		{
 			switch (number)

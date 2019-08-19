@@ -59,23 +59,9 @@ namespace IUPAC2Formula
 			return 0;
 		}
 		
-		//TODO THIS SHOULD BE IMPLEMENTED FURTHER
 		private string GetName(int length)
 		{
-			switch(length)
-			{
-					case 1: return "methyl";
-					case 2: return "ethyl";
-					case 3: return "propyl";
-					case 4: return "butyl";
-					case 5: return "pentyl";
-					case 6: return "hexyl";
-					case 7: return "heptyl";
-					case 8: return "octyl";
-					case 9: return "nonyl";
-					case 10: return "decyl";
-					default: return string.Empty;
-			}
+			return new ChainLengthPrefix(length).Prefix + "yl";
 		}
 		
 		

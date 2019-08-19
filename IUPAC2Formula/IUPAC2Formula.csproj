@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="CarbonMainChain.cs" />
     <Compile Include="CarbonSubChain.cs" />
+    <Compile Include="ChainLengthPrefix.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Formula.cs" />

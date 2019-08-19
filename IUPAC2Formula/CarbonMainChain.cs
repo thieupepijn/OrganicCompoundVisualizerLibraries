@@ -63,45 +63,16 @@ namespace IUPAC2Formula
 		}
 		
 				
-		//TODO THIS SHOULD BE IMPLEMENTED FURTHER
+	
 		private string GetName(int length)
 		{
-			switch(length)
-			{
-					case 1: return "methane";
-					case 2: return "ethane";
-					case 3: return "propane";
-					case 4: return "butane";
-					case 5: return "pentane";
-					case 6: return "hexane";
-					case 7: return "heptane";
-					case 8: return "octane";
-					case 9: return "nonane";
-					case 10: return "decane";
-					case 11: return "undecane";
-					default: return string.Empty;
-			}
+			return GetPrefix(length) + "ane";
 		}
 		
 		
-		//TODO THIS SHOULD BE IMPLEMENTED FURTHER
 		private string GetPrefix(int length)
 		{
-			switch(length)
-			{
-					case 1: return "meth";
-					case 2: return "eth";
-					case 3: return "prop";
-					case 4: return "but";
-					case 5: return "pent";
-					case 6: return "hex";
-					case 7: return "hept";
-					case 8: return "oct";
-					case 9: return "non";
-					case 10: return "dec";
-					case 11: return "undec";
-					default: return string.Empty;
-			}
+			return new ChainLengthPrefix(length).Prefix;
 		}
 		
 		
