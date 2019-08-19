@@ -22,27 +22,39 @@ namespace IUPAC2Formula
 		public MultiplyingAffix(int number)
 		{
 			Number = number;
-			Name = GetPrefixWord(Number);
+			Name = GetAffixName(Number);
 		}
 		
 		public static List<string> GetAllNames()
 		{
 			List<string> names = new List<string>();
-			for (int counter = 1; counter <= Constants.MaxNumberOfSubChains; counter++)
+			foreach(MultiplyingAffix affix in GetAllMultiplyingAffixes())
 			{
-				string name = new MultiplyingAffix(counter).Name;
+				string name = affix.Name;
 				names.Add(name);
 			}
 			return names.OrderByDescending(n => n.Length).ToList();
 		}
 		
+		public static List<MultiplyingAffix> GetAllMultiplyingAffixes()
+		{
+			List<MultiplyingAffix> affixes = new List<MultiplyingAffix>();
+			for (int counter = 1; counter <= Constants.MaxNumberOfSubChains; counter++)
+			{
+				MultiplyingAffix affix = new MultiplyingAffix(counter);
+				affixes.Add(affix);
+			}
+			return affixes;
+		}
+		
+		
 		public static string RemoveMultiplyingAffixName(string line)
 		{
-			List<string> prefixWords = GetAllNames();
-			string prefixword = UtilStrings.FindPattern(line, prefixWords, UtilStrings.SearchDirection.Forward);
-			if (!String.IsNullOrEmpty(prefixword))
+			List<string> affixNames = GetAllNames();
+			string affixName = UtilStrings.FindPattern(line, affixNames, UtilStrings.SearchDirection.Forward);
+			if (!String.IsNullOrEmpty(affixName))
 			{
-				return UtilStrings.RemoveAtStart(line, prefixword);
+				return UtilStrings.RemoveAtStart(line, affixName);
 			}
 			else
 			{
@@ -51,7 +63,7 @@ namespace IUPAC2Formula
 		}
 		
 		//information taken from https://en.wikipedia.org/wiki/IUPAC_numerical_multiplier
-		private string GetPrefixWord(int number)
+		private string GetAffixName(int number)
 		{
 			switch (number)
 			{
