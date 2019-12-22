@@ -1,7 +1,0 @@
-C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\IUPAC2Formula\bin\Debug\IUPAC2Formula.dll
-C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\IUPAC2Formula\bin\Debug\IUPAC2Formula.pdb
-C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Excecutables\IUPAC2Formula.dll
-C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Excecutables\IUPAC2Formula.pdb
-C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\IUPAC2Formula\obj\Debug\IUPAC2Formula.csprojResolveAssemblyReference.cache
-C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\IUPAC2Formula\obj\Debug\IUPAC2Formula.dll
-C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\IUPAC2Formula\obj\Debug\IUPAC2Formula.pdb
