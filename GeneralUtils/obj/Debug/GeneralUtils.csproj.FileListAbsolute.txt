@@ -1,5 +1,0 @@
-C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\GeneralUtils\bin\Debug\GeneralUtils.dll
-C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\GeneralUtils\bin\Debug\GeneralUtils.pdb
-C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\GeneralUtils\obj\Debug\GeneralUtils.dll
-C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\GeneralUtils\obj\Debug\GeneralUtils.pdb
-C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\Backend\GeneralUtils\obj\Debug\GeneralUtils.csprojResolveAssemblyReference.cache
