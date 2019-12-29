@@ -56,7 +56,6 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -71,7 +70,6 @@
   <ItemGroup>
     <Compile Include="AdvancedDrawer.cs" />
     <Compile Include="IPainter.cs" />
-    <Compile Include="SimpleDrawer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

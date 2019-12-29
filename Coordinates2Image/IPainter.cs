@@ -19,13 +19,15 @@ namespace Coordinates2Image
 		
 		void DrawBackGround();
 		
-		void DrawString(string line, int centerx, int centerY);
+		void DrawString(string line, int centerX, int centerY);
 					
 		void DrawCircle(int centerX, int centerY, int radius);
 		
 		void DrawLine(int x1, int y1, int x2, int y2, int thickness);
 		
 		int GetPixelWidthOfString(string line);
+
+		int GetPixelHeightOfString(string line);
 		
 		
 	}

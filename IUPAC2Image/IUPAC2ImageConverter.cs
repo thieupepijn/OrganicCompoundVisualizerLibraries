@@ -6,16 +6,11 @@
  * 
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Windows.Media.Imaging;
-using IUPAC2Formula;
-using Formula2Graph;
-using Graph2Coordinates;
 using Coordinates2Image;
+using Formula2Graph;
+using IUPAC2Formula;
+using System.Collections.Generic;
+using System.Windows.Media.Imaging;
 
 
 namespace IUPAC2Image
@@ -24,28 +19,8 @@ namespace IUPAC2Image
 	public class IUPAC2ImageConverter
 	{
 		
-		SimpleDrawer _simpleDrawer = null;
 		AdvancedDrawer _advancedDrawer = null;
 		
-		public IUPAC2ImageConverter(string iupacName, int imageWidth, int imageHeight, int fontSize, int verticeLength, int verticeThickness)
-		{	
-			List<Graph2Coordinates.Node> nodes;
-			List<Graph2Coordinates.Vertice> vertices;		
-			GetNodesAndVertices(iupacName, imageWidth, imageHeight, verticeLength, out nodes, out vertices);	
-			_simpleDrawer = new SimpleDrawer(nodes, vertices, imageWidth, imageHeight, fontSize, verticeThickness); 
-		}
-		
-		
-		public IUPAC2ImageConverter(string iupacName, int imageWidth, int imageHeight, int fontSize, int verticeLength, int verticeThickness, Color backGroundColor, Brush letterColor, Brush ballsColor, Brush linesColor)
-		{
-			List<Graph2Coordinates.Node> nodes;
-			List<Graph2Coordinates.Vertice> vertices;
-			
-			GetNodesAndVertices(iupacName, imageWidth, imageHeight, verticeLength, out nodes, out vertices);			
-			_simpleDrawer = new SimpleDrawer(nodes, vertices, imageWidth, imageHeight, fontSize, verticeThickness, backGroundColor, letterColor, ballsColor, linesColor);	
-		}
-		
-	
 		public IUPAC2ImageConverter(string iupacName, int imageWidth, int imageHeight, int verticeLength, IPainter painter)
 		{
 			List<Graph2Coordinates.Node> nodes;
@@ -74,32 +49,12 @@ namespace IUPAC2Image
 			Graph2Coordinates.Node.RemoveUnConnectedNodes(nodes, vertices);
 			Graph2Coordinates.Node.Reposition(nodes, vertices, imageWidth, imageHeight);
 		}
-		
-		
-		
-		
-		public Bitmap DrawToBitmap()
-		{
-			return _simpleDrawer.Draw2Bitmap();	
-		}
-		
-		public BitmapImage DrawToBitmapImage()
-		{
-			return _simpleDrawer.Draw2BitmapImage();
-		}
-		
-		
-		public void DrawToFile(string filepath)
-		{
-			_simpleDrawer.Draw2File(filepath);
-		}
-		
+
 		public void DrawOnCanvas()
 		{
 			_advancedDrawer.Draw();
 		}
-		
-		
+
 		private static string GetFormula(string line)
 		{
 			IUPACCompound compound = new IUPACCompound(line);
